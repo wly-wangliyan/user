@@ -1,0 +1,16 @@
+<div class="box" >
+    <ul>
+        <li><label>姓名:</label><input required [(ngModel)]="obj.name"></li>
+        <li><label>年龄:</label><input [(ngModel)]="obj.age"></li>
+        <li><label>性别:</label><input type="radio" value="男" name="sex" id="sex1" [(ngModel)]="obj.sex"> <label for="sex1">男 </label>　　　
+                               <input type="radio" value="女" name="sex"  id="sex2" [(ngModel)]="obj.sex"> <label for="sex2">女 </label>
+        </li>
+        <li><label>电话:</label><input [(ngModel)]="obj.tel" maxlength="11"></li>
+        <li><label>家庭住址:</label><textarea class="address" [(ngModel)]="obj.address"></li></textarea>
+    </ul>
+    <div class="btn">
+        <button (click)=setUserInfo() routerLink = "/details">保存</button>
+        <button routerLink = "/details">取消</button>    
+    </div>
+    
+</div>

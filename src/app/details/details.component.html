@@ -1,0 +1,18 @@
+<div class="list"   *ngIf="isExist()">
+    <ul>
+        <li><label>姓名:</label>{{obj.name}}</li>
+        <li><label>年龄:</label>{{obj.age}}</li>
+        <li><label>性别:</label>{{obj.sex}}</li>
+        <li><label>电话:</label>{{obj.tel}}</li>
+        <li><label>家庭住址:</label><textarea disabled>{{obj.address}}</textarea></li>
+    </ul>
+    <button routerLink="/edit">编辑</button>   
+</div>
+
+<div class="nolist" *ngIf="!isExist()">
+    <span>暂无个人信息，<a href="#" routerLink="/edit">点击</a>前往添加</span>
+</div>
+
+
+
+
