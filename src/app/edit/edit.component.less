@@ -1,35 +1,22 @@
-// input{
-//     display: block;
-// }
-
-
-// .box{
-//     display: flex;
-//     flex-direction:column;
-// }
-
-
-
-// .label{
-//     text-align: right;
-// }
 .box{
     width: 400px;
-    margin: 120px auto;
-    padding:40px 20px;
-    // border:1px solid #eee;
+    margin: 0px auto;
+    padding:30px 0px;
 
     li{
         margin:30px 0px;
-        width: 300px;
+        width: 600px;
         height: 20px;
     }
     .btn{
         display: flex;
         justify-content: space-between;
         padding: 60px 100px;
-        // border:1px solid #eee;
 
+    }
+    textarea{
+        width: 167px;
+        vertical-align: middle;
     }
 }
 label:first-child{
@@ -37,10 +24,26 @@ label:first-child{
     text-align: right;
     width: 80px;
     padding-right:18px;
+    vertical-align: middle;
+    &::before{
+        content: "*";
+        color: #ff0000;
+        font-size: 25px;
+        position: relative;
+        top: 10px;
+        }
+}
+
+#address::before{
+    content: "";
 }
 .address{
     height: 80px;
 }
 input{
     height: 30px;
+    vertical-align: middle;
+}
+i{
+    color: red;
 }
