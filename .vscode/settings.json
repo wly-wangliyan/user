@@ -1,0 +1,163 @@
+// {
+//   "window.zoomLevel": 0,
+//   "terminal.integrated.rendererType": "dom",
+//   "eslint.autoFixOnSave": true,
+//   "editor.formatOnSave": true,
+//   "eslint.validate": [
+//     {
+//       "language": "vue",
+//       "autoFix": true
+//     },
+//     {
+//       "language": "html",
+//       "autoFix": true
+//     },
+//     {
+//       "language": "javascript",
+//       "autoFix": true
+//     }
+//   ],
+//   "eslint.lintTask.enable": true,
+//   "editor.codeActionsOnSave": {
+//     "source.fixAll.eslint": true
+//   }
+// }
+{
+    // 換行
+    "editor.wordWrap": "on",
+    // 代码缩进修改成2个空格
+    "editor.tabSize": 2,
+    // 不檢查縮進，保存后統一按設置項來設置
+    "editor.detectIndentation": false,
+    "editor.suggestFontSize": 14,
+    // 字體大小
+    "editor.fontSize": 18,
+    // 設置行高
+    "editor.lineHeight": 24,
+    // 左側工具欄是否可見
+    "workbench.activityBar.visible": true,
+  
+    // 控制何时自动保存已更新文件。接受的值: "off"、"afterDelay"、"onFocusChange" (编辑器失去焦点)、"onWindowChange" (窗口失去焦点)。如果设置为 "afterDelay"，可在 "files.autoSaveDelay" 中配置延迟时间。
+    "files.autoSave": "onWindowChange",
+    // 启用后，按下 TAB 键，将展开 Emmet 缩写。
+    "emmet.triggerExpansionOnTab": true,
+    "terminal.integrated.rendererType": "dom",
+    "editor.formatOnSave": false,
+    "eslint.lintTask.enable": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    // html格式化
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatter.ts": "vscode-typescript",
+    // vue组件中html代码格式化样式
+    "vetur.format.defaultFormatterOptions": {
+      "js-beautify-html": {
+        // #vue组件中html代码格式化样式
+        "wrap_attributes": "auto", //也可以设置为“auto”，效果会不一样
+        "wrap_line_length": 400,
+        "end_with_newline": false,
+        "semi": false,
+        "singleQuote": true
+      },
+      "prettier": {
+        "semi": false,
+        "singleQuote": true
+      }
+    },
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "git.confirmSync": false,
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "tslint.autoFixOnSave": true,
+    "terminal.integrated.fontSize": 14,
+    // 由于vcode自身的语法检查有些问题，所以可以用第三方工具比如 eslint 或者 tslint 来进行静态检查
+    "javascript.validate.enable": false,
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.associations": {
+      "*.html": "html",
+      "*.vue": "vue-html",
+      "*.md": "plaintext",
+      "*.tsx": "typescriptreact"
+    },
+    "editor.wordWrapColumn": 220,
+    "cSpell.userWords": [
+      "Authing",
+      "Beian",
+      "CIPP",
+      "Carlines",
+      "Cascader",
+      "INDEXLOCATION",
+      "Keychain",
+      "Openid",
+      "QQMAP",
+      "Scrolltolower",
+      "Shen",
+      "Shengyang",
+      "Swiper",
+      "YMDHMS",
+      "accessies",
+      "adcode",
+      "aways",
+      "carid",
+      "codelyzer",
+      "dandong",
+      "errmsg",
+      "esnext",
+      "fuelcard",
+      "gevent",
+      "htcode",
+      "mdby",
+      "mpvue",
+      "mysite",
+      "nums",
+      "parens",
+      "parkone",
+      "paysign",
+      "psycogreen",
+      "psycopg",
+      "quotemark",
+      "submenu",
+      "tarojs",
+      "totalfee",
+      "uglifyjs",
+      "usedcar",
+      "userid",
+      "vuex",
+      "warrival",
+      "washcar",
+      "wechat",
+      "weixin",
+      "wxapp",
+      "wxmp",
+      "zack"
+    ],
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "prettier.semi": false, //去掉代码结尾的分号
+    "prettier.singleQuote": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    } //使用带引号替代双引号
+    // "fileheader.customMade": {
+    //   "description": "",
+    //   "author": "zack",
+    //   "Date": "Do not edit",
+    //   "LastEditTime": "Do not edit"
+    // },
+    // "fileheader.cursorMode": {}
+  }

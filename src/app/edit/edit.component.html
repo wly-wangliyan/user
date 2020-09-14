@@ -1,19 +1,72 @@
-<div class="box" >
-    <ul>
-        <li><label>姓名:</label><input [(ngModel)]="obj.name"></li>
-        <li><label>年龄:</label><input #age maxlength="3" (blur) = "isNumber(age,ageTip)"  [(ngModel)]="obj.age">
-            <i  hidden #ageTip>请输入正确年龄</i> 
-
-        <li><label>性别:</label><input type="radio" value="男" name="sex" id="sex1" [(ngModel)]="obj.sex"> <label for="sex1">男 </label>　　　
-                               <input type="radio" value="女" name="sex"  id="sex2" [(ngModel)]="obj.sex"> <label for="sex2">女 </label>
-        </li>
-        <li><label>电话:</label><input #tel (blur) = "isTelephone(tel,telTip)"  [(ngModel)]="obj.tel"  maxlength="11">
-            <i  hidden #telTip>请输入正确手机号</i></li>
-        <li><label id="address">家庭住址:</label><textarea class="address" [(ngModel)]="obj.address"></textarea></li>
-    </ul>
-    <div class="btn">
-        <button (mousedown)="isAll()" (click)="setUserInfo()" routerLink = "/details">保存</button>
-        <button routerLink = "/details">取消</button>    
+<div class="box">
+  <form #userForm="ngForm">
+    <label>姓名:</label>
+    <input
+      [(ngModel)]="obj.name"
+      id="name"
+      #name="ngModel"
+      name="name"
+      required
+    />
+    <div
+      *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert alert-danger"
+    >
+      <label *ngIf="name.errors.required">请输入姓名</label>
     </div>
-    
+  </form>
+  <ul>
+    <li><label>姓名:</label><input [(ngModel)]="obj.name" /></li>
+    <li>
+      <label>年龄:</label>
+      <input
+        #age
+        maxlength="3"
+        (blur)="isNumber(age, ageTip)"
+        [(ngModel)]="obj.age"
+        required
+      />
+      <i hidden #ageTip>请输入正确年龄</i>
+    </li>
+
+    <li>
+      <label>性别:</label
+      ><input
+        type="radio"
+        value="男"
+        name="sex"
+        id="sex1"
+        [(ngModel)]="obj.sex"
+      />
+      <label for="sex1">男 </label>　　　
+      <input
+        type="radio"
+        value="女"
+        name="sex"
+        id="sex2"
+        [(ngModel)]="obj.sex"
+      />
+      <label for="sex2">女 </label>
+    </li>
+    <li>
+      <label>电话:</label
+      ><input
+        #tel
+        (blur)="isTelephone(tel, telTip)"
+        [(ngModel)]="obj.tel"
+        maxlength="11"
+      />
+      <i hidden #telTip>请输入正确手机号</i>
+    </li>
+    <li>
+      <label id="address">家庭住址:</label
+      ><textarea class="address" [(ngModel)]="obj.address"></textarea>
+    </li>
+  </ul>
+  <div class="btn">
+    <button (mousedown)="isAll()" (click)="setUserInfo()" routerLink="/details">
+      保存
+    </button>
+    <button routerLink="/details">取消</button>
+  </div>
 </div>

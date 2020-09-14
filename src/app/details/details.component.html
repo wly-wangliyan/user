@@ -1,20 +1,42 @@
-<div class="list"   *ngIf="isExist()">
-    <ul>
-        <li><label>姓名:</label><input disabled required [(ngModel)]="obj.name"></li>
-        <li><label>年龄:</label><input disabled [(ngModel)]="obj.age"></li>
-        <li><label>性别:</label><input disabled type="radio" value="男" name="sex" id="sex1" [(ngModel)]="obj.sex"> <label for="sex1">男 </label>　　　
-                               <input disabled type="radio" value="女" name="sex"  id="sex2" [(ngModel)]="obj.sex"> <label for="sex2">女 </label>
-        </li>
-        <li><label>电话:</label><input disabled [(ngModel)]="obj.tel" maxlength="11"></li>
-        <li><label>家庭住址:</label><textarea disabled class="address" [(ngModel)]="obj.address"></li></textarea>
-    </ul>
-    <button routerLink="/edit">编辑</button>   
+<div class="list" *ngIf="isExist()">
+  <ul>
+    <li>
+      <label>姓名:</label><input disabled required [(ngModel)]="obj.name" />
+    </li>
+    <li><label>年龄:</label><input disabled [(ngModel)]="obj.age" /></li>
+    <li>
+      <label>性别:</label
+      ><input
+        disabled
+        type="radio"
+        value="男"
+        name="sex"
+        id="sex1"
+        [(ngModel)]="obj.sex"
+      />
+      <label for="sex1">男 </label>　　　
+      <input
+        disabled
+        type="radio"
+        value="女"
+        name="sex"
+        id="sex2"
+        [(ngModel)]="obj.sex"
+      />
+      <label for="sex2">女 </label>
+    </li>
+    <li>
+      <label>电话:</label
+      ><input disabled [(ngModel)]="obj.tel" maxlength="11" />
+    </li>
+    <li>
+      <label>家庭住址:</label
+      ><textarea disabled class="address" [(ngModel)]="obj.address"></textarea>
+    </li>
+  </ul>
+  <button routerLink="/edit">编辑</button>
 </div>
 
-<div class="nolist" *ngIf="!isExist()">
-    <span>暂无个人信息，<a href="#" routerLink="/edit">点击</a>前往添加</span>
+<div class="no-list" *ngIf="!isExist()">
+  <span>暂无个人信息，<a href="#" routerLink="/edit">点击</a>前往添加</span>
 </div>
-
-
-
-
