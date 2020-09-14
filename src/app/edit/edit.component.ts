@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
   @ViewChild('ageTip') ageTip: any;
   @ViewChild('tel') tel: any;
   @ViewChild('telTip') telTip: any;
-  public ageStatus: boolean = false;
+  public ageStatus = false;
   public obj: any = {
     name: '',
     age: '',
@@ -21,10 +21,9 @@ export class EditComponent implements OnInit {
     tel: '',
     address: ''
   };
-
   private essential: any = {
     name: '',
-    age:'',
+    age: '',
     sex: '',
     tel: '',
   };
@@ -45,39 +44,41 @@ export class EditComponent implements OnInit {
     this.obj = this.userEdit.obj;
   }
 
-// 校验手机号码格式
-  isTelephone(e,value) {
+  // 校验手机号码格式
+  isTelephone(e, value): void{
     if (e.value) {
       if (!(/^1[34578]\d{9}$/.test(e.value))) {
-        value.removeAttribute("hidden");
+        value.removeAttribute('hidden');
         this.obj.tel = e.value = '';
       } else {
-        value.setAttribute("hidden", true);
+        value.setAttribute('hidden', true);
         }
     }
   }
 
   // 校验年龄格式
-  isNumber(e,value) {
+  isNumber(e, value): void{
     if (e.value) {
       this.ageStatus = isNaN(e.value);
-      if (this.ageStatus == true) {
+      if (this.ageStatus === true) {
         this.obj.age = e.value = '';
-        value.removeAttribute("hidden");
+        value.removeAttribute('hidden');
       } else {
-        value.setAttribute("hidden", true);
+        value.setAttribute('hidden', true);
       }
     }
   }
-// 保存时校验必填项
-  isAll() {
-    this.isNumber(this.age.nativeElement, this.ageTip.nativeElement)
-    this.isTelephone(this.tel.nativeElement,this.telTip.nativeElement)
+  // 保存时校验必填项
+  isAll(): any{
+    this.isNumber(this.age.nativeElement, this.ageTip.nativeElement);
+    this.isTelephone(this.tel.nativeElement, this.telTip.nativeElement);
     for (const key in this.essential) {
-      this.essential[key] = this.obj[key]
-      if (!this.obj[key]){
-        alert("请将必填项填写完整");
-        return;
+      if (key){
+        this.essential[key] = this.obj[key];
+        if (!this.obj[key]){
+          alert('请将必填项填写完整');
+          return;
+        }
       }
     }
   }
