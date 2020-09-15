@@ -1,6 +1,6 @@
-// import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { UserInfo } from '../user.model';
 
 @Component({
   selector: 'app-details',
@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
   templateUrl: './details.component.html',
 })
 export class DetailsComponent implements OnInit {
-  public obj: any = {};
+  public obj = new UserInfo();
 
   constructor(public userDetail: UserService) { }
 

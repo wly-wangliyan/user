@@ -81,7 +81,7 @@
     "javascript.implicitProjectConfig.experimentalDecorators": true,
     "python.linting.pylintArgs": ["--load-plugins", "pylint_django"],
     "[html]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "vscode.html-language-features"
     },
     "files.associations": {
       "*.html": "html",

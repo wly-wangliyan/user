@@ -1,72 +1,51 @@
 <div class="box">
   <form #userForm="ngForm">
-    <label>姓名:</label>
-    <input
-      [(ngModel)]="obj.name"
-      id="name"
-      #name="ngModel"
-      name="name"
-      required
-    />
-    <div
-      *ngIf="name.invalid && (name.dirty || name.touched)"
-      class="alert alert-danger"
-    >
-      <label *ngIf="name.errors.required">请输入姓名</label>
+    <div class="form-group">
+      <label class="header essential">姓名:</label>
+      <input [(ngModel)]="obj.name" id="name" #name="ngModel" name="name" required />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <label *ngIf="name.errors.required">请输入姓名</label>
+      </div>
     </div>
-  </form>
-  <ul>
-    <li><label>姓名:</label><input [(ngModel)]="obj.name" /></li>
-    <li>
-      <label>年龄:</label>
-      <input
-        #age
-        maxlength="3"
-        (blur)="isNumber(age, ageTip)"
-        [(ngModel)]="obj.age"
-        required
-      />
-      <i hidden #ageTip>请输入正确年龄</i>
-    </li>
 
-    <li>
-      <label>性别:</label
-      ><input
-        type="radio"
-        value="男"
-        name="sex"
-        id="sex1"
-        [(ngModel)]="obj.sex"
-      />
-      <label for="sex1">男 </label>　　　
-      <input
-        type="radio"
-        value="女"
-        name="sex"
-        id="sex2"
-        [(ngModel)]="obj.sex"
-      />
-      <label for="sex2">女 </label>
-    </li>
-    <li>
-      <label>电话:</label
-      ><input
-        #tel
-        (blur)="isTelephone(tel, telTip)"
-        [(ngModel)]="obj.tel"
-        maxlength="11"
-      />
-      <i hidden #telTip>请输入正确手机号</i>
-    </li>
-    <li>
-      <label id="address">家庭住址:</label
-      ><textarea class="address" [(ngModel)]="obj.address"></textarea>
-    </li>
-  </ul>
-  <div class="btn">
-    <button (mousedown)="isAll()" (click)="setUserInfo()" routerLink="/details">
-      保存
-    </button>
-    <button routerLink="/details">取消</button>
-  </div>
+    <div class="form-group">
+      <label class="header essential">年龄:</label>
+      <input [(ngModel)]="obj.age" id="age" #age="ngModel" name="age" required maxlength="3" />
+      <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
+        <label *ngIf="age.errors.required">请输入年龄</label>
+      </div>
+    </div>
+
+    
+    <div  class="form-group">
+      <label class="header essential">性别:</label>
+      <div class="sex-radio" *ngFor="let sex of sexs">
+        <input [attr.id]="sex" name="sex" ngModel [(ngModel)]="obj.sex" required [value]="sex" type="radio">
+        <label [attr.for]="sex">{{sex}}</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="header essential">手机号:</label>
+      <input [(ngModel)]="obj.tel" id="tel" #tel="ngModel" name="tel" minlength="11" maxlength="11" required />
+      <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
+        <label *ngIf="tel.errors.required">请输入手机号码</label>
+        <label *ngIf="tel.errors.minlength">请输入11位手机号码</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="header">家庭住址:</label>
+        <textarea [(ngModel)]="obj.address" id="address" #address="ngModel" name="address">
+        </textarea>
+    </div>
+
+    <div class="btn">
+      <button type ="button" (mousedown)="onSetEditFormSubmit()" routerLink="/details" [disabled]="!userForm.form.valid">保存</button>
+      <button routerLink="/details">取消</button>
+    </div>  
+  </form>
 </div>
+
+
+
