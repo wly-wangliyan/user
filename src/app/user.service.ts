@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
-// import { User } from './user.model';
+import { UserInfo } from './user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
 
-  public obj: any = {
-    name: '',
-    age: '',
-    sex: '',
-    tel: '',
-    address: '',
-  };
+  public obj = new UserInfo();
 
   // 向本地存数据
   public setUser(obj: any): void {
