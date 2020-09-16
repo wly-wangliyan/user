@@ -7,24 +7,20 @@
         <label *ngIf="name.errors.required">请输入姓名</label>
       </div>
     </div>
-
     <div class="form-group">
-      <label class="header essential">年龄:</label>
+      <label class="header essential" for="age">年龄:</label>
       <input [(ngModel)]="obj.age" id="age" #age="ngModel" name="age" required maxlength="3" />
       <div *ngIf="age.invalid && (age.dirty || age.touched)" class="alert alert-danger">
         <label *ngIf="age.errors.required">请输入年龄</label>
       </div>
     </div>
-
-    
     <div  class="form-group">
       <label class="header essential">性别:</label>
-      <div class="sex-radio" *ngFor="let sex of sexs">
+      <div class="sex-radio" *ngFor="let sex of sexArray">
         <input [attr.id]="sex" name="sex" ngModel [(ngModel)]="obj.sex" required [value]="sex" type="radio">
         <label [attr.for]="sex">{{sex}}</label>
       </div>
     </div>
-
     <div class="form-group">
       <label class="header essential">手机号:</label>
       <input [(ngModel)]="obj.tel" id="tel" #tel="ngModel" name="tel" minlength="11" maxlength="11" required />
@@ -33,17 +29,15 @@
         <label *ngIf="tel.errors.minlength">请输入11位手机号码</label>
       </div>
     </div>
-
     <div class="form-group">
-      <label class="header">家庭住址:</label>
-        <textarea [(ngModel)]="obj.address" id="address" #address="ngModel" name="address">
+      <label class="header" for="address">家庭住址:</label>
+        <textarea [(ngModel)]="obj.address" id="address" name="address">
         </textarea>
     </div>
-
     <div class="btn">
-      <button type ="button" (mousedown)="onSetEditFormSubmit()" routerLink="/details" [disabled]="!userForm.form.valid">保存</button>
+      <button type ="button" (click)="onSetEditFormSubmit()"  [disabled]="!userForm.form.valid">保存</button>
       <button routerLink="/details">取消</button>
-    </div>  
+    </div>
   </form>
 </div>
 
