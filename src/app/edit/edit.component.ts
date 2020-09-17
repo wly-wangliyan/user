@@ -25,17 +25,15 @@ export class EditComponent implements OnInit {
     this.userEdit.isNull(this.obj);
   }
 
-  public onSetEditFormSubmit(): void{
+  public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.obj)) {
       this.userEdit.setUser(this.obj);
       this.router.navigate(['/details'], {relativeTo: this.route});
     }
   }
 
-
-  // 校验必输项格式
-  private checkParamsValid(obj: any): boolean{
-    if (!this.ValidateHelper.isTelephone(obj.tel)){
+  private checkParamsValid(obj: any): boolean {
+    if (!this.ValidateHelper.isTelephone(obj.tel)) {
       alert('请输入正确手机号');
       return false;
     }
@@ -46,7 +44,7 @@ export class EditComponent implements OnInit {
     return true;
   }
 
-  private getUserInfo(): void{
+  private getUserInfo(): void {
     this.userEdit.getUser();
     this.obj = this.userEdit.obj;
   }

@@ -17,8 +17,8 @@
     <div  class="form-group">
       <label class="header essential">性别:</label>
       <div class="sex-radio" *ngFor="let sex of sexArray">
-        <input [attr.id]="sex" name="sex" ngModel [(ngModel)]="obj.sex" required [value]="sex" type="radio">
-        <label [attr.for]="sex">{{sex}}</label>
+        <input [id]="sex" name="sex" ngModel [(ngModel)]="obj.sex" required [value]="sex" type="radio">
+        <label [for]="sex">{{sex}}</label>
       </div>
     </div>
     <div class="form-group">
