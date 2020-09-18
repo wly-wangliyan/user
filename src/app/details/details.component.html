@@ -1,30 +1,32 @@
-<div class="list" *ngIf="isExist()">
+<div class="list" *ngIf="userInfo; else noData">
   <div class="container">
     <table class="table">
       <tr>
         <th>姓名：</th>
-        <td>{{obj.name}}</td>
+        <td>{{userInfo.name}}</td>
       </tr>
       <tr>
         <th>年龄：</th>
-        <td>{{obj.age}}</td>
+        <td>{{userInfo.age}}</td>
       </tr>
       <tr>
         <th>性别：</th>
-        <td>{{obj.sex}}</td>
+        <td>{{userInfo.sex}}</td>
       </tr>
       <tr>
         <th>手机号：</th>
-        <td>{{obj.tel}}</td>
+        <td>{{userInfo.tel}}</td>
       </tr>
       <tr>
         <th>家庭住址：</th>
-        <td>{{obj.address}}</td>
+        <td>{{userInfo.address}}</td>
       </tr>
     </table>
     <button routerLink="/edit">编辑</button>
   </div>
 </div>
-<div class="no-list" *ngIf="!isExist()">
-  暂无个人信息，<a href="#" routerLink="/edit">点击</a>前往添加
-</div>
+<ng-template #noData>
+  <div class="no-list">
+    暂无个人信息，<a href="#" routerLink="/edit">点击</a>前往添加
+  </div>
+</ng-template>

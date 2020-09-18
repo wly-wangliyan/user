@@ -4,7 +4,7 @@ export class ValidateHelper {
    * @param tel 电话号码
    * @returns boolean
    */
-  public isTelephone(tel: string): boolean {
+  public static IsTelephone(tel: string): boolean {
     if (!(/^1[34578]\d{9}$/.test(tel))) {
       tel = '';
       return false;
@@ -28,3 +28,5 @@ export class ValidateHelper {
     }
   }
 }
+
+export const validateHelper = new ValidateHelper();

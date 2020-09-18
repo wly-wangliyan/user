@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
 import { UserInfo } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-details',
@@ -8,22 +8,11 @@ import { UserInfo } from '../user.model';
   templateUrl: './details.component.html',
 })
 export class DetailsComponent implements OnInit {
-  public obj = new UserInfo();
+  public userInfo = new UserInfo();
 
-  constructor(public userDetail: UserService) { }
+  constructor(public userService: UserService) { }
 
   public ngOnInit(): void {
-    this.userDetail.getUser();
-    this.obj = this.userDetail.obj;
-    this.userDetail.isNull(this.obj);
-  }
-
-  public isExist(): boolean {
-    for (const key in this.obj) {
-      if (this.obj[key]) {
-        return true;
-      }
-    }
-    return false;
+    this.userInfo = this.userService.getUser();
   }
 }
