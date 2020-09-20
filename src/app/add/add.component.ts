@@ -5,11 +5,12 @@ import { UserService } from '../user.service';
 import { validateHelper, ValidateHelper } from '../utils/validate-helper';
 
 @Component({
-  selector: 'app-edit',
-  styleUrls: ['./edit.component.less'],
-  templateUrl: './edit.component.html',
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.less']
 })
-export class EditComponent implements OnInit{
+export class AddComponent implements OnInit {
+
   @ViewChild('cancelbtn') cancelbtn: ElementRef;
 
   public userInfo = new UserInfo();
@@ -19,9 +20,6 @@ export class EditComponent implements OnInit{
   }
 
   public ngOnInit(): void {
-    if (!!this.userService.getUser()) {
-      this.userInfo = this.userService.getUser();
-    }
   }
 
   public onSetEditFormSubmit(): void {
@@ -60,4 +58,5 @@ export class EditComponent implements OnInit{
     }
     return true;
   }
+
 }
