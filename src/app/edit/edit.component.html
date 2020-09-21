@@ -1,5 +1,5 @@
 <div class="box">
-  <form #userForm="ngForm">
+  <form #userForm="ngForm" #userForm>
     <div class="form-group">
       <label class="header essential">姓名:</label>
       <input [(ngModel)]="userInfo.name" id="name" #name="ngModel" name="name" required />
@@ -36,25 +36,11 @@
     </div>
     <div class="button">
       <button type ="button" (click)="onSetEditFormSubmit()"  [disabled]="!userForm.form.valid">保存</button>
-      <ng-container *ngIf="userForm.dirty">
-        <button (click)="userService.onCancelClick()">取消</button>
-      </ng-container>
-        <button *ngIf="!userForm.dirty" (click)="onCancelClick1()">取消</button>
+      <button (click)="onCancelClick(userForm.dirty)">取消</button>
     </div>
   </form>
 </div>
 
-<!-- <div class="alert" #cancelbtn>
-  <div class="alert-header">
-    <span>提示</span>
-    <button (click)="userService.noCancel()">x</button>
-  </div>
-  <div class="alert-body" >操作未保存，是否放弃？</div>
-  <div class="alert-btn">
-    <button class="makesurecacel" (click)="userService.onmakeSureCancel()">确定</button>
-    <button class="nocancel" (click)="userService.noCancel()">取消</button>
-  </div>
-</div> -->
 
 
 

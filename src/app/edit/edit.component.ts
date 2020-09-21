@@ -11,27 +11,30 @@ import { validateHelper, ValidateHelper } from '../utils/validate-helper';
   templateUrl: './edit.component.html',
 })
 export class EditComponent implements OnInit, OnDestroy{
-  @ViewChild('cancelbtn') cancelbtn: ElementRef;
 
   private subscription: Subscription;
 
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
+  private fromPath: 'list' | 'details' = 'list';
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
-  
+    this.route.queryParamMap.subscribe(map => {
+      this.fromPath = map.get('from') === 'details' ? 'details' : 'list';
+    });
+    console.log(this.fromPath);
   }
 
   public ngOnInit(): void {
     if (!!this.userService.getUser()) {
       this.userInfo = this.userService.getUser();
     }
-    this.subscription = this.userService.cancelBtnClick.subscribe(()=>{
-
+    this.subscription = this.userService.cancelBtnClick.subscribe(() => {
+      this.navigated();
     });
   }
-  
-  public ngOnDestroy(){
+
+  public ngOnDestroy(): void{
     this.subscription && this.subscription.unsubscribe();
   }
 
@@ -42,8 +45,20 @@ export class EditComponent implements OnInit, OnDestroy{
     }
   }
 
-  public onCancelClick1(): void {
-    this.router.navigate(['/list'], { relativeTo: this.route });
+  public onCancelClick(value: boolean): void {
+    if (value) {
+      this.userService.cancelClick();
+    } else {
+      this.navigated();
+    }
+  }
+
+  private navigated(): void{
+    if (this.fromPath === 'details') {
+      this.router.navigate(['/details'], { relativeTo: this.route });
+    } else {
+      this.router.navigate(['/list'], { relativeTo: this.route });
+    }
   }
 
   private checkParamsValid(obj: any): boolean {

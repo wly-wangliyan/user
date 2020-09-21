@@ -14,7 +14,7 @@
         <td>{{userInfo.age}}</td>
         <td>{{userInfo.tel}}</td>
         <td>
-          <a href = '#' routerLink="/edit">编辑</a>&nbsp;
+          <a routerLink="/edit" [queryParams]="{from:'list'}">编辑</a>&nbsp;
           <a routerLink="/details">详情</a>
         </td>
       </tr>

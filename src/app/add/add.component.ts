@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserInfo } from '../user.model';
 import { UserService } from '../user.service';
 import { validateHelper, ValidateHelper } from '../utils/validate-helper';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add',
@@ -15,11 +16,15 @@ export class AddComponent implements OnInit {
 
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
+  private subscription: Subscription;
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
   }
 
   public ngOnInit(): void {
+    this.subscription = this.userService.cancelBtnClick.subscribe(() => {
+      this.router.navigate(['/list'], { relativeTo: this.route });
+    });
   }
 
   public onSetEditFormSubmit(): void {
@@ -29,23 +34,13 @@ export class AddComponent implements OnInit {
     }
   }
 
-  public onCancelClick1(): void {
-    this.router.navigate(['/list'], { relativeTo: this.route });
+  public onCancelClick(value: boolean): void {
+    if (value) {
+      this.userService.cancelClick();
+    } else {
+      this.router.navigate(['/list'], { relativeTo: this.route });
+    }
   }
-
-  // public onCancelClick(): void {
-  //   console.log(this.cancelbtn);
-  //   this.cancelbtn.nativeElement.style.display = 'block';
-  // }
-
-  // public makeSureCancel(): void {
-  //   this.cancelbtn.nativeElement.style.display = 'none';
-  //   this.router.navigate(['/list'], { relativeTo: this.route });
-  // }
-
-  // public noCancel(): void {
-  //   this.cancelbtn.nativeElement.style.display = 'none';
-  // }
 
   private checkParamsValid(obj: any): boolean {
     if (!ValidateHelper.IsTelephone(obj.tel)) {

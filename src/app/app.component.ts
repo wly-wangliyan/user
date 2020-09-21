@@ -9,29 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AppComponent implements AfterViewInit {
 
-  @ViewChild('cancelbtn') tipModal : HTMLDivElement;
+  @ViewChild('cancelbtn') tipModal: HTMLDivElement;
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute){
-    // console.log(this.tipModal); 
   }
 
-  public onClickChooseMenu(e): void{
-    const aItems: any=document.getElementsByTagName('a');
-    for(const item of aItems){
-      if(item.id === e.target.id){
-        item.style.backgroundColor='#555';
-      }else{
-        item.style.backgroundColor='#f1f1f1';
-      }
-    }
-  }
-
-  ngAfterViewInit(){
-    console.log(this.tipModal);
+  public ngAfterViewInit(): void{
+    // console.log(this.tipModal);
     this.userService.tipDialog = this.tipModal;
-  }
-
-  onClickEvent(e){
-    console.log(e.target.id);
   }
 }

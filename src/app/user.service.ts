@@ -40,15 +40,14 @@ export class UserService {
   //   this.router.navigate(['/list'], { relativeTo: this.route });
   // }
 
-  public onCancelClick(): void {
-    // console.log(this.tipDialog);
+  public cancelClick(): void {
     this.tipDialog.nativeElement.style.display = 'block';
   }
 
   public onmakeSureCancel(): void {
     this.cancelBtnClick.emit();
     this.tipDialog.nativeElement.style.display = 'none';
-    this.router.navigate(['/list'], { relativeTo: this.route });
+    // this.router.navigate(['/list'], { relativeTo: this.route });
   }
 
   public noCancel(): void {
