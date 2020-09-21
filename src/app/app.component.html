@@ -1,6 +1,28 @@
-<div>个人信息管理系统</div>
-<ul class="menu" id="menu">
-  <li><a routerLink="/home" id="L1" (click)="tabChoose(1)">主页</a></li>
-  <li><a routerLink="/details" id="L2" (click)="tabChoose(2)">个人信息</a></li>
-</ul>
-<router-outlet></router-outlet>
+<div class="main">
+  <div class="mainheader">个人信息管理系统</div>
+  <div class="mainleft">
+    <ul class="menu" id="menu">
+      <li><a routerLink="/home"  routerLinkActive id="L1" (click)="onClickChooseMenu($event)" #L1>主页</a></li>
+      <li><a routerLink="/list" id="L2" (click)="onClickChooseMenu($event)" #L2>个人信息</a></li>
+    </ul>
+  </div>
+
+  <div class="mainright">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="alert-contain" #cancelbtn> 
+    <div class="alert">
+      <div class="alert-header">
+        <span>提示</span>
+        <button (click)="userService.noCancel()">x</button>
+      </div>
+      <div class="alert-body">操作未保存，是否放弃？</div>
+      <div class="alert-btn">
+        <button class="makesurecacel" (click)="userService.onmakeSureCancel()">确定</button>
+        <button class="nocancel" (click)="userService.noCancel()">取消</button>
+      </div>
+    </div>
+  </div>
+  
+</div>

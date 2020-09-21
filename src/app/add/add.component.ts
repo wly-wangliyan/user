@@ -25,27 +25,27 @@ export class AddComponent implements OnInit {
   public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.userInfo)) {
       this.userService.saveUser(this.userInfo);
-      this.router.navigate(['/details'], { relativeTo: this.route });
+      this.router.navigate(['/list'], { relativeTo: this.route });
     }
   }
 
   public onCancelClick1(): void {
-    this.router.navigate(['/details'], { relativeTo: this.route });
+    this.router.navigate(['/list'], { relativeTo: this.route });
   }
 
-  public onCancelClick(): void {
-    console.log(this.cancelbtn);
-    this.cancelbtn.nativeElement.style.display = 'block';
-  }
+  // public onCancelClick(): void {
+  //   console.log(this.cancelbtn);
+  //   this.cancelbtn.nativeElement.style.display = 'block';
+  // }
 
-  public makeSureCancel(): void {
-    this.cancelbtn.nativeElement.style.display = 'none';
-    this.router.navigate(['/details'], { relativeTo: this.route });
-  }
+  // public makeSureCancel(): void {
+  //   this.cancelbtn.nativeElement.style.display = 'none';
+  //   this.router.navigate(['/list'], { relativeTo: this.route });
+  // }
 
-  public noCancel(): void {
-    this.cancelbtn.nativeElement.style.display = 'none';
-  }
+  // public noCancel(): void {
+  //   this.cancelbtn.nativeElement.style.display = 'none';
+  // }
 
   private checkParamsValid(obj: any): boolean {
     if (!ValidateHelper.IsTelephone(obj.tel)) {

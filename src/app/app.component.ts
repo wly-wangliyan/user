@@ -1,22 +1,37 @@
-import { Component } from '@angular/core';
-// import { ConfirmationBoxComponent } from './share/confirmation-box/confirmation-box.component';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { UserService } from './user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-  public tabChoose(num: number): void{
-    let i;
-    for (i = 1; i <= 2; i++) {
-      if (i === num) {
-        document.getElementById('L' + i).style.backgroundColor = '#a3b17e';
-      } else {
-        document.getElementById('L' + i).style.backgroundColor = '#e5e9f0';
+  @ViewChild('cancelbtn') tipModal : HTMLDivElement;
+
+  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute){
+    // console.log(this.tipModal); 
+  }
+
+  public onClickChooseMenu(e): void{
+    const aItems: any=document.getElementsByTagName('a');
+    for(const item of aItems){
+      if(item.id === e.target.id){
+        item.style.backgroundColor='#555';
+      }else{
+        item.style.backgroundColor='#f1f1f1';
       }
     }
   }
 
+  ngAfterViewInit(){
+    console.log(this.tipModal);
+    this.userService.tipDialog = this.tipModal;
+  }
+
+  onClickEvent(e){
+    console.log(e.target.id);
+  }
 }

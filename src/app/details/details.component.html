@@ -1,4 +1,7 @@
-<div class="list" *ngIf="userInfo; else noData">
+<div>
+  <button class="return" routerLink="/list">返回</button>
+</div>
+<div class="list" *ngIf="userInfo">
   <div class="container">
     <table class="table">
       <tr>
@@ -22,11 +25,6 @@
         <td>{{userInfo.address}}</td>
       </tr>
     </table>
-    <button routerLink="/edit">编辑</button>
+    <button class="editbtn" routerLink="/edit">编辑</button>
   </div>
 </div>
-<ng-template #noData>
-  <div class="no-list">
-    暂无个人信息，<a href="#" routerLink="/add">点击</a>前往添加
-  </div>
-</ng-template>

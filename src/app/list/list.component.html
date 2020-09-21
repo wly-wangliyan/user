@@ -1,0 +1,22 @@
+<div *ngIf="!userInfo"class="add">
+  <button routerLink="/add">添加</button>
+</div>
+<div class="table">
+  <table>
+    <tr>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>电话</th>
+      <th>操作</th>
+    </tr>
+      <tr *ngIf="userInfo">
+        <td>{{userInfo.name}}</td>
+        <td>{{userInfo.age}}</td>
+        <td>{{userInfo.tel}}</td>
+        <td>
+          <a href = '#' routerLink="/edit">编辑</a>&nbsp;
+          <a routerLink="/details">详情</a>
+        </td>
+      </tr>
+  </table>
+</div>

@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { UserInfo } from './user.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 const USER_INFO_KEY = 'user_service_info';
 
@@ -7,6 +8,12 @@ const USER_INFO_KEY = 'user_service_info';
   providedIn: 'root',
 })
 export class UserService {
+
+  public cancelBtnClick: EventEmitter<any> = new EventEmitter();
+
+  constructor(private router: Router, private route: ActivatedRoute){
+  }
+  public tipDialog: any;
 
   public saveUser(obj: UserInfo): void {
     if (obj) {
@@ -27,5 +34,24 @@ export class UserService {
       return item;
     }
     return null;
+  }
+
+  // public onCancelClick1(): void {
+  //   this.router.navigate(['/list'], { relativeTo: this.route });
+  // }
+
+  public onCancelClick(): void {
+    // console.log(this.tipDialog);
+    this.tipDialog.nativeElement.style.display = 'block';
+  }
+
+  public onmakeSureCancel(): void {
+    this.cancelBtnClick.emit();
+    this.tipDialog.nativeElement.style.display = 'none';
+    this.router.navigate(['/list'], { relativeTo: this.route });
+  }
+
+  public noCancel(): void {
+    this.tipDialog.nativeElement.style.display = 'none';
   }
 }
