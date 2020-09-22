@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 export class DetailsComponent implements OnInit {
   public userInfo = new UserInfo();
 
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService) {}
 
   public ngOnInit(): void {
     this.userInfo = this.userService.getUser();

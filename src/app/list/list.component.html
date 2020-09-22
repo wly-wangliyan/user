@@ -1,5 +1,5 @@
-<div *ngIf="!userInfo"class="add">
-  <button routerLink="/add">添加</button>
+<div *ngIf="!userInfo" class="add">
+  <button class="btn-common" routerLink="/add">添加</button>
 </div>
 <div class="table">
   <table>
@@ -9,14 +9,14 @@
       <th>电话</th>
       <th>操作</th>
     </tr>
-      <tr *ngIf="userInfo">
-        <td>{{userInfo.name}}</td>
-        <td>{{userInfo.age}}</td>
-        <td>{{userInfo.tel}}</td>
-        <td>
-          <a routerLink="/edit" [queryParams]="{from:'list'}">编辑</a>&nbsp;
-          <a routerLink="/details">详情</a>
-        </td>
-      </tr>
+    <tr *ngIf="userInfo">
+      <td>{{userInfo.name}}</td>
+      <td>{{userInfo.age}}</td>
+      <td>{{userInfo.tel}}</td>
+      <td>
+        <a routerLink="/edit" [queryParams]="{from:'list'}">编辑</a>&nbsp;
+        <a routerLink="/details">详情</a>
+      </td>
+    </tr>
   </table>
 </div>

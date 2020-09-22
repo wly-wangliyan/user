@@ -2,28 +2,28 @@
   <form #userForm="ngForm" #userForm>
     <div class="form-group">
       <label class="header essential">姓名:</label>
-      <input [(ngModel)]="userInfo.name" id="name" #name="ngModel" name="name" required />
+      <input [(ngModel)]="userInfo.name" id="name" #name="ngModel" name="name" required placeholder="请输入姓名"/>
       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="tip">
         <label *ngIf="name.errors.required">请输入姓名</label>
       </div>
     </div>
     <div class="form-group">
       <label class="header essential" for="age">年龄:</label>
-      <input [(ngModel)]="userInfo.age" id="age" #age="ngModel" name="age" required maxlength="3" />
+      <input [(ngModel)]="userInfo.age" id="age" #age="ngModel" name="age" required maxlength="3" placeholder="请输入年龄"/>
       <div *ngIf="age.invalid && (age.dirty || age.touched)" class="tip">
         <label *ngIf="age.errors.required">请输入年龄</label>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group sex-form">
       <label class="header essential">性别:</label>
       <ng-container *ngFor="let sex of sexArray">
         <input class="sex-radio" type="radio" [name]="sex" [id]="sex" [(ngModel)]="userInfo.sex" required [value]="sex">
-        <label [for]="sex">{{sex}}</label>
+        <label class="sexLable" [for]="sex">{{sex}}</label>
       </ng-container>
     </div>
     <div class="form-group">
       <label class="header essential">手机号:</label>
-      <input [(ngModel)]="userInfo.tel" id="tel" #tel="ngModel" name="tel" minlength="11" maxlength="11" required #spy />
+      <input [(ngModel)]="userInfo.tel" id="tel" #tel="ngModel" name="tel" minlength="11" maxlength="11" required placeholder="请输入11位手机号" />
       <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="tip">
         <label *ngIf="tel.errors.required">请输入手机号码</label>
         <label *ngIf="tel.errors.minlength">请输入11位手机号码</label>
@@ -31,15 +31,12 @@
     </div>
     <div class="form-group">
       <label class="header" for="address">家庭住址:</label>
-        <textarea [(ngModel)]="userInfo.address" id="address" name="address">
+        <textarea [(ngModel)]="userInfo.address" id="address" name="address" placeholder="100字以内" >
         </textarea>
     </div>
     <div class="button">
-      <button type ="button" (click)="onSetEditFormSubmit()"  [disabled]="!userForm.form.valid">保存</button>
-      <button (click)="onCancelClick(userForm.dirty)">取消</button>
+      <button class="btn-primary" type="button" (click)="onSetEditFormSubmit()"  [disabled]="!userForm.form.valid">保存</button>
+      <button class="btn-cancel" (click)="onCancelClick(userForm.dirty)">取消</button>
     </div>
   </form>
 </div>
-
-
-

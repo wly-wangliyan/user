@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { UserInfo } from './user.model';
-import { Router, ActivatedRoute } from '@angular/router';
 
 const USER_INFO_KEY = 'user_service_info';
 
@@ -10,17 +9,17 @@ const USER_INFO_KEY = 'user_service_info';
 export class UserService {
 
   public cancelBtnClick: EventEmitter<any> = new EventEmitter();
-
-  constructor(private router: Router, private route: ActivatedRoute){
-  }
   public tipDialog: any;
-
   public saveUser(obj: UserInfo): void {
     if (obj) {
       localStorage.setItem(USER_INFO_KEY, JSON.stringify(obj));
     }
   }
 
+  constructor(){
+  }
+
+  // 从本地获取数据
   public getUser(): UserInfo {
     const tmp = localStorage.getItem(USER_INFO_KEY);
     if (tmp) {
@@ -35,22 +34,19 @@ export class UserService {
     }
     return null;
   }
-
-  // public onCancelClick1(): void {
-  //   this.router.navigate(['/list'], { relativeTo: this.route });
-  // }
-
+  // 存在未保存数据时点击取消按钮触发
   public cancelClick(): void {
     this.tipDialog.nativeElement.style.display = 'block';
   }
 
-  public onmakeSureCancel(): void {
+  // 提示弹框点击确定
+  public onSureCancelBtnClick(): void {
     this.cancelBtnClick.emit();
     this.tipDialog.nativeElement.style.display = 'none';
-    // this.router.navigate(['/list'], { relativeTo: this.route });
   }
 
-  public noCancel(): void {
+  // 提示弹框点击取消
+  public onUnCancelBtnClick(): void {
     this.tipDialog.nativeElement.style.display = 'none';
   }
 }

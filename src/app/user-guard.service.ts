@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserGuardService implements CanActivate {
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) { }
+
+  // 未新建个人信息守卫
   canActivate(): boolean {
     if (!this.userService.getUser()) {
       alert('请先保存个人信息');

@@ -1,13 +1,18 @@
 .box{
   position: relative;
-  width: 300px;
-  border: 1px solid #726d6d;
+  width: 600px;
+  // border: 1px solid #726d6d;
   top: 100px;
   left: 200px;
-  // margin: 80px auto;
+}
+
+form{
+  width: 500px;
+  // border: 1px solid black;
 }
 
 .form-group{
+  // border: 1px solid black;
   margin: 15px 0px;
 }
 
@@ -17,26 +22,41 @@
   width: 80px;
   vertical-align: middle;
   margin-right: 15px;
+  color: #272727;
 }
 
 .essential::before {
   content: "*";
   color: #ff0000;
-  font-size: 25px;
+  font-size: 15px;
   position: relative;
-  top: 10px;
+  top: 3px;
+  right: 5px;
 }
 
 input{
   height: 28px;
   vertical-align: bottom;
   font-size: 15px;
+  border: 1px solid #e8e8e8;
+  color: #272727;
+  width: 250px;
+}
+
+.input:hover,.textarea:hover{
+  border: 1px solid #979696;
+}
+
+.input:hover,.textarea:hover{
+  border: 1px solid #979696;
 }
 
 textarea{
   vertical-align: middle;
-  width:167px;
   height: 80px;
+  border: 1px solid #e8e8e8;
+  color: #272727;
+  width: 250px;
 }
 
 .tip{
@@ -45,12 +65,50 @@ textarea{
 }
 
 .button{
+  // border: 1px solid black;
   display: flex;
   width: 200px;
-  margin: 10px auto;
+  margin: 10px 100px;
   justify-content: space-between;
 }
 
 .sex-radio{
-  display: inline;
+  width: 13px !important;
+}
+
+.alert{
+  position: absolute;
+  display: none;
+  top: 360px;
+  left: 600px;
+  width: 300px;
+  height: 160px;
+  background-color: #e2e9ee;
+  border: 1px solid #726d6d;
+}
+
+.alert-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.alert-body{
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 30px;
+}
+
+.alert-btn{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  margin-left: 50px;
+}
+
+.sexLable{
+  display: inline-block;
+  width: 20px;
+  vertical-align: middle;
+  padding: 0px 5px;
 }

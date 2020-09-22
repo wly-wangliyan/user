@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserInfo } from '../user.model';
@@ -12,10 +12,9 @@ import { validateHelper, ValidateHelper } from '../utils/validate-helper';
 })
 export class EditComponent implements OnInit, OnDestroy{
 
-  private subscription: Subscription;
-
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
+  private subscription: Subscription;
   private fromPath: 'list' | 'details' = 'list';
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
@@ -35,16 +34,19 @@ export class EditComponent implements OnInit, OnDestroy{
   }
 
   public ngOnDestroy(): void{
+    // tslint:disable-next-line:no-unused-expression
     this.subscription && this.subscription.unsubscribe();
   }
 
+  // 提交存储个人信息
   public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.userInfo)) {
       this.userService.saveUser(this.userInfo);
-      this.router.navigate(['/list'], { relativeTo: this.route });
+      this.navigated();
     }
   }
 
+  // 点击取消按钮执行判断是否需要弹框确认提示
   public onCancelClick(value: boolean): void {
     if (value) {
       this.userService.cancelClick();
@@ -53,6 +55,7 @@ export class EditComponent implements OnInit, OnDestroy{
     }
   }
 
+  // 根据上一页面路由信息判断跳转
   private navigated(): void{
     if (this.fromPath === 'details') {
       this.router.navigate(['/details'], { relativeTo: this.route });

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserInfo } from '../user.model';
 import { UserService } from '../user.service';
@@ -27,6 +27,7 @@ export class AddComponent implements OnInit {
     });
   }
 
+  // 存储个人信息
   public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.userInfo)) {
       this.userService.saveUser(this.userInfo);
@@ -34,6 +35,7 @@ export class AddComponent implements OnInit {
     }
   }
 
+  // 点击取消按钮执行判断是否需要弹框确认提示
   public onCancelClick(value: boolean): void {
     if (value) {
       this.userService.cancelClick();
