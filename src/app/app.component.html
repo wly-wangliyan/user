@@ -2,14 +2,14 @@
   <div class="main-header">个人信息管理系统</div>
   <div class="main-left">
     <ul class="menu" id="menu">
-      <li><a routerLink="/home"  routerLinkActive="activeRoute" id="L1">主页</a></li>
-      <li><a routerLink="/list" routerLinkActive="activeRoute" id="L2">个人信息</a></li>
+      <li><a routerLink="/home" (click)="onClickChooseMenu($event)" routerLinkActive="activeRoute" id="L1">主页</a></li>
+      <li><a routerLink="/list" (click)="onClickChooseMenu($event)" routerLinkActive="activeRoute" id="L2">个人信息</a></li>
     </ul>
   </div>
   <div class="main-right">
     <router-outlet></router-outlet>
   </div>
-  <div class="alert-contain" #cancelbtn> 
+  <div class="alert-contain" #cancelbtn>
     <div class="alert">
       <div class="alert-header">
         <span>提示</span>
@@ -23,5 +23,5 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
