@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
 
   // 点击导航菜单效果
   public onClickChooseMenu(e): void{
-    const aItems: any = document.getElementsByTagName('a');
+    const aItems: any = document.getElementsByClassName('choice');
     for (const item of aItems){
       if (item.id === e.target.id){
         item.style.color = '#40a9ff';

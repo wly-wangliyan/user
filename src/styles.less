@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 *{
     margin: 0px 0px;
+    padding: 0px;
     list-style:none;
     // font-family: "Microsoft YaHei";
 }
-  
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+
 button{
     padding: 5px 20px;
     border: 0.5px solid  #c5c6c7;
@@ -12,7 +18,7 @@ button{
 }
 
 .btn-primary{
-  
+
   background-color: #45c8dc;
 }
 .btn-cancel{
@@ -24,4 +30,10 @@ button[disabled]{
 
 .btn-common{
   background-color: #eef1f1;
+}
+
+.box{
+  overflow: auto;
+  height: 100%;
+  width: 100%;
 }
