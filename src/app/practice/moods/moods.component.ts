@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoodsComponent implements OnInit {
 
+  public moodArray: string[] = [];
   constructor() { }
 
   ngOnInit(): void {

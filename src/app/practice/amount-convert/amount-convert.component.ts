@@ -6,16 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./amount-convert.component.less']
 })
 export class AmountConvertComponent implements OnInit {
-  public amount = 0;
-  public amountConvert = 0;
+  public amount: string = undefined;
+  public amountArray: any[] = [];
+  public amount1: string = undefined;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  public onSubmit(): void{
-    this.amountConvert = Number(this.amount);
-  }
+  public onSubmit(): void {
 
+    this.amount1 = this.amount;
+  }
 }
+
+
