@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 @Component({
@@ -6,11 +6,18 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
 
-  @ViewChild('cancelbtn') tipModal: HTMLDivElement;
+  @ViewChild('cancelBtn') tipModal: HTMLDivElement;
+  public practiceStatus = false;
 
   constructor(public userService: UserService){
+  }
+
+  public ngOnInit(): void {
+    if (!!this.userService.getUser()) {
+      this.practiceStatus = true;
+    }
   }
 
   public ngAfterViewInit(): void{

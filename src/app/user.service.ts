@@ -3,9 +3,7 @@ import { UserInfo } from './user.model';
 
 const USER_INFO_KEY = 'user_service_info';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserService {
 
   public cancelBtnClick: EventEmitter<any> = new EventEmitter();

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserInfo } from '../user.model';
-import { UserService } from '../user.service';
-import { validateHelper, ValidateHelper } from '../utils/validate-helper';
+import { UserInfo } from '../../user.model';
+import { UserService } from '../../user.service';
+import { validateHelper, ValidateHelper } from '../../utils/validate-helper';
 
 @Component({
   selector: 'app-edit',

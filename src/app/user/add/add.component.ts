@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserInfo } from '../user.model';
-import { UserService } from '../user.service';
-import { validateHelper, ValidateHelper } from '../utils/validate-helper';
+import { UserInfo } from '../../user.model';
+import { UserService } from '../../user.service';
+import { validateHelper, ValidateHelper } from '../../utils/validate-helper';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.less']
 })
-export class AddComponent implements OnInit {
+export class AddComponent implements OnInit, OnDestroy {
 
   @ViewChild('cancelbtn') cancelbtn: ElementRef;
 
@@ -25,6 +25,11 @@ export class AddComponent implements OnInit {
     this.subscription = this.userService.cancelBtnClick.subscribe(() => {
       this.router.navigate(['/list'], { relativeTo: this.route });
     });
+  }
+
+  public ngOnDestroy(): void{
+    // tslint:disable-next-line:no-unused-expression
+    this.subscription && this.subscription.unsubscribe();
   }
 
   // 存储个人信息
@@ -55,5 +60,4 @@ export class AddComponent implements OnInit {
     }
     return true;
   }
-
 }

@@ -5,13 +5,14 @@
       <ul class="menu" id="menu">
         <li><a routerLink="/home" (click)="onClickChooseMenu($event)" id="L1" class="choice"  routerLinkActive="activeRoute" >主页</a></li>
         <li><a routerLink="/list" (click)="onClickChooseMenu($event)" id="L2" class="choice" routerLinkActive="activeRoute" >个人信息</a></li>
+        <li><a routerLink="/practice"  class="choice" routerLinkActive="activeRoute" >练习</a></li>
       </ul>
     </div>
     <div class="main-right">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div class="alert-contain" #cancelbtn>
+  <div class="alert-contain" #cancelBtn>
     <div class="alert">
       <div class="alert-header">
         <span>提示</span>
