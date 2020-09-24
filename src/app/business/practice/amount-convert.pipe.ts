@@ -39,7 +39,7 @@ export class AmountConvertPipe implements PipeTransform {
     return this.result;
   }
 
-  // 转换整数
+  // 转换整数部分
   private integerConvert(param: string): string {
     const numberConvert = Number(param);
     let temporaryValue: string;
@@ -73,7 +73,7 @@ export class AmountConvertPipe implements PipeTransform {
     return temporaryValue;
   }
 
-  // 转换小数
+  // 转换小数部分
   private decimalConvert(param: string): string {
     let digitResult: string;
     const digitConvert = Number(param);

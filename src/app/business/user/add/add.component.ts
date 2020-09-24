@@ -1,35 +1,30 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, OnDestroy, EventEmitter} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserInfo } from '../../../user.model';
+import { UserService } from '../../../user.service';
+import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
 import { Subscription } from 'rxjs';
-import { UserInfo } from '../../user.model';
-import { UserService } from '../../user.service';
-import { validateHelper, ValidateHelper } from '../../utils/validate-helper';
 
 @Component({
-  selector: 'app-edit',
-  styleUrls: ['./edit.component.less'],
-  templateUrl: './edit.component.html',
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.less']
 })
-export class EditComponent implements OnInit, OnDestroy{
+export class AddComponent implements OnInit, OnDestroy {
+
+  @ViewChild('cancelBtn') cancelBtn: ElementRef;
+
 
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
   private subscription: Subscription;
-  private fromPath: 'list' | 'details' = 'list';
 
   constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
-    this.route.queryParamMap.subscribe(map => {
-      this.fromPath = map.get('from') === 'details' ? 'details' : 'list';
-    });
-    console.log(this.fromPath);
   }
 
   public ngOnInit(): void {
-    if (!!this.userService.getUser()) {
-      this.userInfo = this.userService.getUser();
-    }
     this.subscription = this.userService.cancelBtnClick.subscribe(() => {
-      this.navigated();
+      this.router.navigate(['/list'], { relativeTo: this.route });
     });
   }
 
@@ -38,11 +33,11 @@ export class EditComponent implements OnInit, OnDestroy{
     this.subscription && this.subscription.unsubscribe();
   }
 
-  // 提交存储个人信息
+  // 存储个人信息
   public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.userInfo)) {
       this.userService.saveUser(this.userInfo);
-      this.navigated();
+      this.router.navigate(['/list'], { relativeTo: this.route });
     }
   }
 
@@ -50,15 +45,6 @@ export class EditComponent implements OnInit, OnDestroy{
   public onCancelClick(value: boolean): void {
     if (value) {
       this.userService.cancelClick();
-    } else {
-      this.navigated();
-    }
-  }
-
-  // 根据上一页面路由信息判断跳转
-  private navigated(): void{
-    if (this.fromPath === 'details') {
-      this.router.navigate(['/details'], { relativeTo: this.route });
     } else {
       this.router.navigate(['/list'], { relativeTo: this.route });
     }

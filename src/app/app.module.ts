@@ -3,11 +3,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {DetailsComponent} from './user/details/details.component';
-import {EditComponent} from './user/edit/edit.component';
-import {HomeComponent} from './home/home.component';
-import {AddComponent} from './user/add/add.component';
-import {ListComponent} from './user/list/list.component';
+import {DetailsComponent} from './business/user/details/details.component';
+import {EditComponent} from './business/user/edit/edit.component';
+import {HomeComponent} from './business/home/home.component';
+import {AddComponent} from './business/user/add/add.component';
+import {ListComponent} from './business/user/list/list.component';
 import {UserService} from './user.service';
 
 @NgModule({

@@ -7,14 +7,18 @@ const USER_INFO_KEY = 'user_service_info';
 export class UserService {
 
   public cancelBtnClick: EventEmitter<any> = new EventEmitter();
+  public out: EventEmitter<any> = new EventEmitter();
   public tipDialog: any;
+
+  constructor(){
+  }
+
+  // 向本地存储数据
   public saveUser(obj: UserInfo): void {
     if (obj) {
       localStorage.setItem(USER_INFO_KEY, JSON.stringify(obj));
+      this.out.emit();
     }
-  }
-
-  constructor(){
   }
 
   // 从本地获取数据

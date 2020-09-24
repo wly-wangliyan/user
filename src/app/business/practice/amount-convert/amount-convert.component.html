@@ -1,0 +1,18 @@
+<div class="convert-modal">
+  <form #amountForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>请输入金额：</label>
+      <input [(ngModel)]="amount" id="amount" #amountInput="ngModel" name="amount" required placeholder="请输入小于1000元的金额"
+             maxlength="6" pattern="^(0|[1-9][0-9]{0,2})(\.\d{0,2})?$"/>
+      <span> 元</span>
+      <button type="submit" [disabled]="!amountForm.form.valid">转换</button>
+      <div class="tip" *ngIf="amountInput.invalid && (amountInput.dirty || amountInput.touched)" class="tip">
+        <label *ngIf="amountInput.errors.required">请输入金额</label>
+        <label *ngIf="amountInput.errors.pattern">请输入正确金额</label>
+      </div>
+    </div>
+  </form>
+  <div class="result">
+    <label>转换后金额：{{amount1 | amountConvert}}</label>
+  </div>
+</div>

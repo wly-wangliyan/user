@@ -1,11 +1,11 @@
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './business/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './user/details/details.component';
-import { EditComponent } from './user/edit/edit.component';
-import { AddComponent } from './user/add/add.component';
+import { DetailsComponent } from './business/user/details/details.component';
+import { EditComponent } from './business/user/edit/edit.component';
+import { AddComponent } from './business/user/add/add.component';
 import { UserGuardService } from './user-guard.service';
-import { ListComponent } from './user/list/list.component';
+import { ListComponent } from './business/user/list/list.component';
 
 
 
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'add', component: AddComponent },
   { path: 'list', component: ListComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'practice', loadChildren: () => import('./practice/practice.module')
+  { path: 'practice', loadChildren: () => import('./business/practice/practice.module')
       .then(mod => mod.PracticeModule) },
 ];
 

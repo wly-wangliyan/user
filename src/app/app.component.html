@@ -2,10 +2,15 @@
   <div class="main-header">个人信息管理系统</div>
   <div class="main-body">
     <div class="main-left">
-      <ul class="menu" id="menu">
-        <li><a routerLink="/home" (click)="onClickChooseMenu($event)" id="L1" class="choice"  routerLinkActive="activeRoute" >主页</a></li>
-        <li><a routerLink="/list" (click)="onClickChooseMenu($event)" id="L2" class="choice" routerLinkActive="activeRoute" >个人信息</a></li>
-        <li><a routerLink="/practice"  class="choice" routerLinkActive="activeRoute" >练习</a></li>
+      <ul class="menu" id="menu" >
+        <li><a routerLink="/home"  id="L1" class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">主页</a></li>
+        <li><a routerLink="/list"  id="L2" class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">个人信息</a></li>
+        <li [ngClass]="{'practice-menu': practiceStatus}"><a routerLink="/practice" id="L3"  class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">练习</a>
+          <ul class="second-menu" >
+            <li><a routerLink="/practice/amount-convert"  id="L4" class="choice" routerLinkActive="activeRoute">管道应用</a></li>
+            <li><a routerLink="/practice/moods" id="L5" class="choice" routerLinkActive="activeRoute">服务应用</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
     <div class="main-right">

@@ -1,5 +1,6 @@
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { UserService } from './user.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,16 @@ import { UserService } from './user.service';
 export class AppComponent implements AfterViewInit, OnInit {
 
   @ViewChild('cancelBtn') tipModal: HTMLDivElement;
-  public practiceStatus = false;
+  public practiceStatus = this.userService.getUser() ? false : true;
 
   constructor(public userService: UserService){
   }
 
   public ngOnInit(): void {
-    if (!!this.userService.getUser()) {
-      this.practiceStatus = true;
+    if (!this.userService.getUser()) {
+      this.userService.out.subscribe(() => {
+        this.practiceStatus = false;
+      });
     }
   }
 
