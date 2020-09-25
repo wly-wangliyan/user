@@ -8,7 +8,9 @@ export class UserService {
 
   public cancelBtnClick: EventEmitter<any> = new EventEmitter();
   public out: EventEmitter<any> = new EventEmitter();
+  public out1: EventEmitter<any> = new EventEmitter();
   public tipDialog: any;
+  isOpen = false;
 
   constructor(){
   }
@@ -51,5 +53,12 @@ export class UserService {
   // 提示弹框点击取消
   public onUnCancelBtnClick(): void {
     this.tipDialog.nativeElement.style.display = 'none';
+  }
+
+  public toggle(): void {
+    // this.tipDialog.nativeElement.style.display = 'block';
+    this.isOpen = !this.isOpen;
+    this.out1.emit();
+    console.log(this.tipDialog.nativeElement.style.display);
   }
 }

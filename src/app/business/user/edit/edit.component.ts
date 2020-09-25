@@ -49,7 +49,8 @@ export class EditComponent implements OnInit, OnDestroy{
   // 点击取消按钮执行判断是否需要弹框确认提示
   public onCancelClick(value: boolean): void {
     if (value) {
-      this.userService.cancelClick();
+      // this.userService.cancelClick();
+      this.userService.toggle();
     } else {
       this.navigated();
     }

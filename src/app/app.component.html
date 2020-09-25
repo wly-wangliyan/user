@@ -3,7 +3,7 @@
   <div class="main-body">
     <div class="main-left">
       <ul class="menu" id="menu" >
-        <li><a routerLink="/home"  id="L1" class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">主页</a></li>
+        <li><a routerLink="/home"  id="L1" class="choice open-close-container" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">主页</a></li>
         <li><a routerLink="/list"  id="L2" class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">个人信息</a></li>
         <li [ngClass]="{'practice-menu': practiceStatus}"><a routerLink="/practice" id="L3"  class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">练习</a>
           <ul class="second-menu" >
@@ -17,8 +17,8 @@
       <router-outlet></router-outlet>
     </div>
   </div>
-  <div class="alert-contain" #cancelBtn>
-    <div class="alert">
+<!--  <div class="alert-contain" #cancelBtn>-->
+    <div class="alert" [@openClose]="isOpen ? 'open' : 'closed'" #cancelBtn>
       <div class="alert-header">
         <span>提示</span>
         <button class="cancel-tip-btn" (click)="userService.onUnCancelBtnClick()">x</button>
@@ -31,5 +31,5 @@
         </div>
       </div>
     </div>
-  </div>
+<!--  </div>-->
 </div>

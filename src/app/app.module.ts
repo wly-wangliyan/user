@@ -9,6 +9,7 @@ import {HomeComponent} from './business/home/home.component';
 import {AddComponent} from './business/user/add/add.component';
 import {ListComponent} from './business/user/list/list.component';
 import {UserService} from './user.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {UserService} from './user.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
