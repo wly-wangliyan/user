@@ -56,7 +56,7 @@ export class UserService {
   }
 
   public toggle(): void {
-    // this.tipDialog.nativeElement.style.display = 'block';
+    this.tipDialog.nativeElement.style.display = 'block';
     this.isOpen = !this.isOpen;
     this.out1.emit();
     console.log(this.tipDialog.nativeElement.style.display);

@@ -10,6 +10,7 @@ import {AddComponent} from './business/user/add/add.component';
 import {ListComponent} from './business/user/list/list.component';
 import {UserService} from './user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HomeComponent,
     AddComponent,
     ListComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
+  entryComponents: [AlertComponent],
   exports: []
 })
 export class AppModule {

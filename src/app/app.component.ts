@@ -7,18 +7,19 @@ import {Subscription} from 'rxjs';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  animations: [
-    trigger('openClose', [
-      state('open', style({display: 'block', transform: 'translateY(40%)'})),
-      state('closed', style({display: 'none', transform: 'translateY(60%)'})),
-      transition('open => closed', [
-        animate('3s')
-      ]),
-      transition('closed => open', [
-        animate('3s')
-      ]),
-    ]),
-  ],
+  // animations: [
+  //   trigger('openClose', [
+  //     state('open', style({display: 'block', transform: 'translateY(0%)'})),
+  //     // state('closed', style({display: 'none', transform: 'translateY(60%)'})),
+  //     transition('void=> *', [
+  //       style({ transform: 'translateX(60%)' }),
+  //       animate(100)
+  //     ]),
+  //     transition('* => void', [
+  //       animate('2s')
+  //     ]),
+  //   ]),
+  // ],
 })
 export class AppComponent implements AfterViewInit, OnInit {
 

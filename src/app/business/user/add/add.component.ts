@@ -1,9 +1,13 @@
-import {Component, OnInit, ViewChild, ElementRef, OnDestroy, EventEmitter} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, OnDestroy, EventEmitter, Injector} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserInfo } from '../../../user.model';
 import { UserService } from '../../../user.service';
 import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
 import { Subscription } from 'rxjs';
+import { createCustomElement } from '@angular/elements';
+import { AlertService } from '../../../alert.service';
+import { AlertComponent } from '../../../alert/alert.component';
+
 
 @Component({
   selector: 'app-add',
@@ -19,7 +23,11 @@ export class AddComponent implements OnInit, OnDestroy {
   public sexArray = ['男', '女'];
   private subscription: Subscription;
 
-  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
+  // tslint:disable-next-line: max-line-length
+  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute, injector: Injector, public alert: AlertService) {
+    const AlertElement = createCustomElement(AlertComponent, {injector});
+    // Register the custom element with the browser.
+    customElements.define('alert-element', AlertElement);
   }
 
   public ngOnInit(): void {
