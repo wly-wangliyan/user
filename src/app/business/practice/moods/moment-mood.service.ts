@@ -9,19 +9,19 @@ export class MomentMoodService {
 
   constructor() { }
 
-  private getRandomNumberByRange(start, end): number{
-    return Math.floor(Math.random() * (end - start) + start);
-  }
-
+  // 随机选择一种心情并存到本地
   public produceAMomentMood(): string{
-    const bNumber: number = this.getRandomNumberByRange(0, 7);
-    sessionStorage.momentMoodSession = this.momentMoodList[bNumber];
-    return this.momentMoodList[bNumber];
+    const randomNumber: number = this.getRandomNumberByRange(0, 7);
+    sessionStorage.momentMoodSession = this.momentMoodList[randomNumber];
+    return this.momentMoodList[randomNumber];
   }
 
+  // 从本地获取心情数据
   public getAMomentMood(): string{
     return sessionStorage.getItem('momentMoodSession');
   }
 
-
+  private getRandomNumberByRange(start, end): number{
+    return Math.floor(Math.random() * (end - start) + start);
+  }
 }

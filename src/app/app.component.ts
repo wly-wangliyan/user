@@ -1,51 +1,37 @@
-import { Component, ViewChild, AfterViewInit, OnInit, HostBinding } from '@angular/core';
+import {Component, ViewChild, AfterViewInit, OnInit, Injector} from '@angular/core';
 import { UserService } from './user.service';
-import {trigger, state, style, animate, transition} from '@angular/animations';
-import {Subscription} from 'rxjs';
+import {createCustomElement} from '@angular/elements';
+import {AlertComponent} from './alert/alert.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  // animations: [
-  //   trigger('openClose', [
-  //     state('open', style({display: 'block', transform: 'translateY(0%)'})),
-  //     // state('closed', style({display: 'none', transform: 'translateY(60%)'})),
-  //     transition('void=> *', [
-  //       style({ transform: 'translateX(60%)' }),
-  //       animate(100)
-  //     ]),
-  //     transition('* => void', [
-  //       animate('2s')
-  //     ]),
-  //   ]),
-  // ],
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements OnInit {
 
   @ViewChild('cancelBtn') tipModal: HTMLDivElement;
+  @ViewChild('secondMenu') secondMenu: any;
   public practiceStatus = this.userService.getUser() ? false : true;
-  public isOpen = false;
+  public secondStatus = true;
 
-  constructor(public userService: UserService){
+  constructor(public userService: UserService, injector: Injector){
+    const AlertElement = createCustomElement(AlertComponent, {injector});
+    // Register the custom element with the browser.
+    customElements.define('alert-element', AlertElement);
   }
-
-
 
   public ngOnInit(): void {
     if (!this.userService.getUser()) {
-      this.userService.out.subscribe(() => {
+      this.userService.saveBroadcast.subscribe(() => {
         this.practiceStatus = false;
       });
     }
-    this.userService.out1.subscribe(() => {
-    this.isOpen = this.userService.isOpen;
-    });
   }
 
-  public ngAfterViewInit(): void{
-    this.userService.tipDialog = this.tipModal;
-  }
+  // public ngAfterViewInit(): void{
+  //   this.userService.tipDialog = this.tipModal;
+  // }
 
   // 点击导航菜单效果
   public onClickChooseMenu(e): void{
@@ -53,6 +39,10 @@ export class AppComponent implements AfterViewInit, OnInit {
     for (const item of aItems){
       if (item.id === e.target.id){
         item.style.color = '#40a9ff';
+        if (e.target.id === 'L3' ){
+          this.secondStatus = !this.secondStatus;
+          this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block' ;
+        }
       }else{
         item.style.color = 'white';
       }

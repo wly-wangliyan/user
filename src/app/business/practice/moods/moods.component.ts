@@ -18,7 +18,8 @@ export class MoodsComponent implements OnInit, OnDestroy {
     this.momentMood = this.momentMoodService.getAMomentMood();
   }
 
-  public produceOneMood(): void{
+  // 随机产生一种心情类型
+  public produceOneMoodBtnClick(): void{
     const aNumber: number = Math.random();
     if (aNumber > 0.5){
       this.globalMood = this.globalMoodService.produceAGlobalMood();

@@ -1,12 +1,10 @@
-import {Component, OnInit, ViewChild, ElementRef, OnDestroy, EventEmitter, Injector} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, OnDestroy} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserInfo } from '../../../user.model';
 import { UserService } from '../../../user.service';
 import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
 import { Subscription } from 'rxjs';
-import { createCustomElement } from '@angular/elements';
-import { AlertService } from '../../../alert.service';
-import { AlertComponent } from '../../../alert/alert.component';
+import { AlertService } from '../../../alert/alert.service';
 
 
 @Component({
@@ -24,14 +22,11 @@ export class AddComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   // tslint:disable-next-line: max-line-length
-  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute, injector: Injector, public alert: AlertService) {
-    const AlertElement = createCustomElement(AlertComponent, {injector});
-    // Register the custom element with the browser.
-    customElements.define('alert-element', AlertElement);
+  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute, public alertService: AlertService) {
   }
 
   public ngOnInit(): void {
-    this.subscription = this.userService.cancelBtnClick.subscribe(() => {
+    this.subscription = this.alertService.cancelBroadcast.subscribe(() => {
       this.router.navigate(['/list'], { relativeTo: this.route });
     });
   }
@@ -52,7 +47,8 @@ export class AddComponent implements OnInit, OnDestroy {
   // 点击取消按钮执行判断是否需要弹框确认提示
   public onCancelClick(value: boolean): void {
     if (value) {
-      this.userService.cancelClick();
+      // this.userService.cancelClick();
+      this.alertService.showAsElement();
     } else {
       this.router.navigate(['/list'], { relativeTo: this.route });
     }

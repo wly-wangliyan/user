@@ -6,12 +6,8 @@ const USER_INFO_KEY = 'user_service_info';
 @Injectable()
 export class UserService {
 
-  public cancelBtnClick: EventEmitter<any> = new EventEmitter();
-  public out: EventEmitter<any> = new EventEmitter();
-  public out1: EventEmitter<any> = new EventEmitter();
-  public tipDialog: any;
-  isOpen = false;
-
+  // public cancelBtnClick: EventEmitter<any> = new EventEmitter();
+  public saveBroadcast: EventEmitter<any> = new EventEmitter();
   constructor(){
   }
 
@@ -19,7 +15,7 @@ export class UserService {
   public saveUser(obj: UserInfo): void {
     if (obj) {
       localStorage.setItem(USER_INFO_KEY, JSON.stringify(obj));
-      this.out.emit();
+      this.saveBroadcast.emit();
     }
   }
 
@@ -37,28 +33,5 @@ export class UserService {
       return item;
     }
     return null;
-  }
-
-  // 存在未保存数据时点击取消按钮触发
-  public cancelClick(): void {
-    this.tipDialog.nativeElement.style.display = 'block';
-  }
-
-  // 提示弹框点击确定
-  public onSureCancelBtnClick(): void {
-    this.cancelBtnClick.emit();
-    this.tipDialog.nativeElement.style.display = 'none';
-  }
-
-  // 提示弹框点击取消
-  public onUnCancelBtnClick(): void {
-    this.tipDialog.nativeElement.style.display = 'none';
-  }
-
-  public toggle(): void {
-    this.tipDialog.nativeElement.style.display = 'block';
-    this.isOpen = !this.isOpen;
-    this.out1.emit();
-    console.log(this.tipDialog.nativeElement.style.display);
   }
 }

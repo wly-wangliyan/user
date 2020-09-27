@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { UserInfo } from '../../../user.model';
 import { UserService } from '../../../user.service';
 import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
+import { AlertService } from '../../../alert/alert.service';
 
 @Component({
   selector: 'app-edit',
@@ -17,7 +18,7 @@ export class EditComponent implements OnInit, OnDestroy{
   private subscription: Subscription;
   private fromPath: 'list' | 'details' = 'list';
 
-  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute) {
+  constructor(public userService: UserService, private router: Router, private route: ActivatedRoute, public alertService: AlertService) {
     this.route.queryParamMap.subscribe(map => {
       this.fromPath = map.get('from') === 'details' ? 'details' : 'list';
     });
@@ -28,7 +29,7 @@ export class EditComponent implements OnInit, OnDestroy{
     if (!!this.userService.getUser()) {
       this.userInfo = this.userService.getUser();
     }
-    this.subscription = this.userService.cancelBtnClick.subscribe(() => {
+    this.subscription = this.alertService.cancelBroadcast.subscribe(() => {
       this.navigated();
     });
   }
@@ -50,7 +51,7 @@ export class EditComponent implements OnInit, OnDestroy{
   public onCancelClick(value: boolean): void {
     if (value) {
       // this.userService.cancelClick();
-      this.userService.toggle();
+      this.alertService.showAsElement();
     } else {
       this.navigated();
     }

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AmountConvertComponent implements OnInit {
   public amount: string = undefined;
   public amountArray: any[] = [];
-  public amount1: string = undefined;
+  public finalAmount: string = undefined;
 
   constructor() { }
 
@@ -16,8 +16,7 @@ export class AmountConvertComponent implements OnInit {
   }
 
   public onSubmit(): void {
-
-    this.amount1 = this.amount;
+    this.finalAmount = this.amount;
   }
 }
 

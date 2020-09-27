@@ -1,15 +1,15 @@
- <!-- <div class="alert-contain" #cancelBtn> -->
-  <div class="alert" [@state]="state ? 'opened' : 'closed'" #cancelBtn>
+<div class="alert-contain">
+  <div class="alert" [@state]="state">
     <div class="alert-header">
       <span>提示</span>
-      <button class="cancel-tip-btn">x</button>
+      <button class="cancel-tip-btn" (click)="closed.next()">x</button>
     </div>
     <div class="alert-body">
       <div class="alert-text">操作未保存，是否放弃？</div>
       <div class="alert-btn">
-        <button class="btn-primary">确定</button>
-        <button class="btn-cancel" >取消</button>
+        <button class="btn-primary" (click)="onSureClosedBtnClick()">确定</button>
+        <button class="btn-cancel" (click)="closed.next()">取消</button>
       </div>
     </div>
   </div>
- <!-- </div> -->
+</div>

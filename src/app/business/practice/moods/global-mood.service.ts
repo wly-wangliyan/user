@@ -9,14 +9,15 @@ export class GlobalMoodService {
 
   constructor() { }
 
-
-  private getRandomNumberByRange(start, end): number{
-    return Math.floor(Math.random() * (end - start) + start);
+  // 从心情列表中选择一个心情
+  public produceAGlobalMood(): string{
+    const randomNumber: number = this.getRandomNumberByRange(0, 7);
+    return this.globalMoodList[randomNumber];
   }
 
-  public produceAGlobalMood(): string{
-    const bNumber: number = this.getRandomNumberByRange(0, 7);
-    return this.globalMoodList[bNumber];
+  // 产生0~7之间的随机数
+  private getRandomNumberByRange(start, end): number{
+    return Math.floor(Math.random() * (end - start) + start);
   }
 
 }

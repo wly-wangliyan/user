@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
       <label class="header essential" for="age">年龄:</label>
-      <input [(ngModel)]="userInfo.age" id="age" #age="ngModel" name="age" required maxlength="3" placeholder="请输入年龄"/>
+      <input [(ngModel)]="userInfo.age" id="age" #age="ngModel" name="age" required maxlength="3" placeholder="请输入年龄">
       <div *ngIf="age.invalid && (age.dirty || age.touched)" class="tip">
         <label *ngIf="age.errors.required">请输入年龄</label>
       </div>
