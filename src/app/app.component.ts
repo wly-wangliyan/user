@@ -1,26 +1,29 @@
-import {Component, ViewChild, OnInit, Injector} from '@angular/core';
+import {Component, ViewChild, OnInit, Injector, OnDestroy} from '@angular/core';
 import { UserService } from './user.service';
 import {createCustomElement} from '@angular/elements';
 import {AlertComponent} from './alert/alert.component';
+import {GlobalMoodService} from './business/practice/moods/global-mood.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   @ViewChild('secondMenu') secondMenu: any;
   public practiceStatus = this.userService.getUser() ? false : true;
   private secondStatus = true; // 二级菜单栏状态
 
-  constructor(public userService: UserService, injector: Injector){
+  constructor(public userService: UserService, injector: Injector, public globalMoodService: GlobalMoodService){
     const AlertElement = createCustomElement(AlertComponent, {injector});
     // 注册自定义元素
     customElements.define('alert-element', AlertElement);
   }
 
   public ngOnInit(): void {
+    console.log('haha');
+    sessionStorage.removeItem('globalMoodSession');
     if (!this.userService.getUser()) {
       this.userService.saveBroadcast.subscribe(() => {
         this.practiceStatus = false;
@@ -53,5 +56,10 @@ export class AppComponent implements OnInit {
         item.style.backgroundColor = '#3b4966';
       }
     }
+  }
+
+  public ngOnDestroy(): void{
+    console.log('123');
+    sessionStorage.removeItem('globalMoodSession');
   }
 }

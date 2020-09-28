@@ -20,4 +20,15 @@ export class GlobalMoodService {
     return Math.floor(Math.random() * (end - start) + start);
   }
 
+  // 随机选择一种心情并存到本地
+  public produceSetAGlobalMood(): string{
+    const randomNumber: number = this.getRandomNumberByRange(0, 7);
+    sessionStorage.globalMoodSession = this.globalMoodList[randomNumber];
+    return this.globalMoodList[randomNumber];
+  }
+
+  // 从本地取出globalService
+  public getAGlobalMood(): string{
+    return sessionStorage.getItem('globalMoodSession');
+  }
 }

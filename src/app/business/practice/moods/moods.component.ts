@@ -15,20 +15,22 @@ export class MoodsComponent implements OnInit, OnDestroy {
   constructor(public globalMoodService: GlobalMoodService, public momentMoodService: MomentMoodService) { }
 
   ngOnInit(): void {
-    this.momentMood = this.momentMoodService.getAMomentMood();
+    // this.momentMood = this.momentMoodService.getAMomentMood();
+    this.globalMood = this.globalMoodService.getAGlobalMood();
   }
 
   // 随机产生一种心情类型
   public produceOneMoodBtnClick(): void{
     const aNumber: number = Math.random();
     if (aNumber > 0.5){
-      this.globalMood = this.globalMoodService.produceAGlobalMood();
+      this.globalMood = this.globalMoodService.produceSetAGlobalMood();
     }else{
       this.momentMood = this.momentMoodService.produceAMomentMood();
     }
   }
 
   public ngOnDestroy(): void{
+    console.log('123');
     sessionStorage.removeItem('momentMoodSession');
   }
 }
