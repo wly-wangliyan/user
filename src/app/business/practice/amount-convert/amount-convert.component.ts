@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./amount-convert.component.less']
 })
 export class AmountConvertComponent implements OnInit {
-  public amount: string = undefined;
+  public amount: string = undefined; // 输入金额
   public amountArray: any[] = [];
-  public finalAmount: string = undefined;
+  public finalAmount: string = undefined; // 计算后金额
 
   constructor() { }
 

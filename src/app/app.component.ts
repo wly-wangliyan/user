@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit, OnInit, Injector} from '@angular/core';
+import {Component, ViewChild, OnInit, Injector} from '@angular/core';
 import { UserService } from './user.service';
 import {createCustomElement} from '@angular/elements';
 import {AlertComponent} from './alert/alert.component';
@@ -10,14 +10,13 @@ import {AlertComponent} from './alert/alert.component';
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('cancelBtn') tipModal: HTMLDivElement;
   @ViewChild('secondMenu') secondMenu: any;
-  public practiceStatus = this.userService.getUser() ? false : true;
-  public secondStatus = true;
+  private practiceStatus = this.userService.getUser() ? false : true;
+  private secondStatus = true; // 二级菜单栏状态
 
   constructor(public userService: UserService, injector: Injector){
     const AlertElement = createCustomElement(AlertComponent, {injector});
-    // Register the custom element with the browser.
+    // 注册自定义元素
     customElements.define('alert-element', AlertElement);
   }
 
@@ -27,11 +26,12 @@ export class AppComponent implements OnInit {
         this.practiceStatus = false;
       });
     }
+    // 监听练习模块页面点击导航栏，左侧导航栏显示
+    this.userService.practiceModalStatus.subscribe(() => {
+      this.secondStatus = false;
+      this.secondMenu.nativeElement.style.display = 'block';
+    });
   }
-
-  // public ngAfterViewInit(): void{
-  //   this.userService.tipDialog = this.tipModal;
-  // }
 
   // 点击导航菜单效果
   public onClickChooseMenu(e): void{
@@ -42,6 +42,9 @@ export class AppComponent implements OnInit {
         if (e.target.id === 'L3' ){
           this.secondStatus = !this.secondStatus;
           this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block' ;
+        }else{
+          this.secondStatus = true;
+          this.secondMenu.nativeElement.style.display = 'none';
         }
       }else{
         item.style.color = 'white';

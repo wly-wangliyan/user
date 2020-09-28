@@ -6,9 +6,14 @@ const USER_INFO_KEY = 'user_service_info';
 @Injectable()
 export class UserService {
 
-  // public cancelBtnClick: EventEmitter<any> = new EventEmitter();
   public saveBroadcast: EventEmitter<any> = new EventEmitter();
+  public practiceModalStatus: EventEmitter<any> = new EventEmitter();
   constructor(){
+  }
+
+  // 点击页面上方导航栏
+  public onClickMenu(): void{
+    this.practiceModalStatus.emit();
   }
 
   // 向本地存储数据

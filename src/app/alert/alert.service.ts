@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable, Injector, Output} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { NgElement, WithProperties } from '@angular/elements';
 import { AlertComponent } from './alert.component';
 
@@ -17,13 +17,6 @@ export class AlertService {
     alertEl.addEventListener('closed', () => document.body.removeChild(alertEl));
     document.body.appendChild(alertEl);
   }
-
-  // // 提示弹框点击确定
-  // public onSureClosedBtnClick(): void {
-  //   // this.closed.next();
-  //   // this.alertService.closeAlert();
-  //   this.cancelBroadcast.next();
-  // }
 
   public closeAlert(): void {
     this.cancelBroadcast.emit();
