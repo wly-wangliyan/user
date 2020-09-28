@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {GlobalMoodService} from './global-mood.service';
 import {MomentMoodService} from './moment-mood.service';
 
@@ -8,7 +8,7 @@ import {MomentMoodService} from './moment-mood.service';
   templateUrl: './moods.component.html',
   styleUrls: ['./moods.component.less']
 })
-export class MoodsComponent implements OnInit, OnDestroy {
+export class MoodsComponent implements OnInit {
 
   public globalMood = '';
   public momentMood = '';
@@ -26,9 +26,5 @@ export class MoodsComponent implements OnInit, OnDestroy {
     }else{
       this.momentMood = this.momentMoodService.produceAMomentMood();
     }
-  }
-
-  public ngOnDestroy(): void{
-    sessionStorage.removeItem('momentMoodSession');
   }
 }
