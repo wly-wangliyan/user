@@ -15,7 +15,6 @@ export class MoodsComponent implements OnInit, OnDestroy {
   constructor(public globalMoodService: GlobalMoodService, public momentMoodService: MomentMoodService) { }
 
   ngOnInit(): void {
-    // this.momentMood = this.momentMoodService.getAMomentMood();
     this.globalMood = this.globalMoodService.getAGlobalMood();
   }
 
@@ -30,7 +29,6 @@ export class MoodsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void{
-    console.log('123');
     sessionStorage.removeItem('momentMoodSession');
   }
 }
