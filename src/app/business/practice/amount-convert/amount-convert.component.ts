@@ -22,22 +22,19 @@ export class AmountConvertComponent implements OnInit {
 
   public onKeydown(e): void{
     const valueLength = e.target.value.length;
-    if (window.getSelection && window.getSelection().toString().length > 0){
-      const a = window.getSelection().toString().length;
-      e.target.value = e.target.value.substring(0, valueLength - a);
-    }
     let finalValue: string;
     const targetValue = e.target.value;
     const targetSelectionStart = e.target.selectionStart;
+    const targetSelectionEnd = e.target.selectionEnd;
     switch (targetSelectionStart){
       case 0:
-        finalValue = e.key + targetValue;
+        finalValue = e.key + targetValue.substring(targetSelectionEnd, targetValue.length);
         break;
       case valueLength:
         finalValue = targetValue + e.key;
         break;
       default:
-        finalValue = targetValue.substring(0, targetSelectionStart) + e.key + targetValue.substring(targetSelectionStart, valueLength);
+        finalValue = targetValue.substring(0, targetSelectionStart) + e.key + targetValue.substring(targetSelectionEnd, valueLength);
     }
     if (!(/^(0|[1-9][0-9]{0,2})(\.\d{0,2})?$/.test(finalValue)) && this.permittedKeycode.indexOf(e.keyCode) === -1){
       e.preventDefault();

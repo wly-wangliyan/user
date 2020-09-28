@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    console.log('haha');
     sessionStorage.removeItem('globalMoodSession');
     if (!this.userService.getUser()) {
       this.userService.saveBroadcast.subscribe(() => {
@@ -46,7 +45,6 @@ export class AppComponent implements OnInit, OnDestroy {
         if (e.target.id === 'L3' ){
           this.secondStatus = !this.secondStatus;
           this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block' ;
-          console.log(e.target.innerHTML);
         }else{
           this.secondStatus = true;
           this.secondMenu.nativeElement.style.display = 'none';
