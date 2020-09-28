@@ -2,8 +2,8 @@
   <form #amountForm="ngForm" (ngSubmit)="onSubmit()">
     <div>
       <label>请输入金额：</label>
-      <input [(ngModel)]="amount" id="amount" #amountInput="ngModel" name="amount" required placeholder="请输入小于1000元的金额"
-             maxlength="6" pattern="^(0|[1-9][0-9]{0,2})(\.\d{0,2})?$"/>
+      <input type="text" [(ngModel)]="amount" autocomplete="off" id="amount" #amountInput="ngModel" name="amount" required placeholder="请输入小于1000元的金额"
+             maxlength="6" pattern="^(0|[1-9][0-9]{0,2})(\.\d{0,2})?$" (keydown)="onKeydown($event)" />
       <span> 元</span>
       <button type="submit" [disabled]="!amountForm.form.valid">转换</button>
       <div class="tip" *ngIf="amountInput.invalid && (amountInput.dirty || amountInput.touched)" class="tip">
@@ -13,6 +13,6 @@
     </div>
   </form>
   <div class="result">
-    <label>转换后金额：{{finalAmount | amountConvert}}</label>
+    <label>转换后金额：{{amount | amountConvert}}</label>
   </div>
 </div>

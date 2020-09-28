@@ -39,15 +39,18 @@ export class AppComponent implements OnInit {
     for (const item of aItems){
       if (item.id === e.target.id){
         item.style.color = '#40a9ff';
+        item.style.backgroundColor = '#26334f';
         if (e.target.id === 'L3' ){
           this.secondStatus = !this.secondStatus;
           this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block' ;
+          console.log(e.target.innerHTML);
         }else{
           this.secondStatus = true;
           this.secondMenu.nativeElement.style.display = 'none';
         }
       }else{
         item.style.color = 'white';
+        item.style.backgroundColor = '#3b4966';
       }
     }
   }

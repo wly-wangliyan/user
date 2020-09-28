@@ -47,7 +47,6 @@ export class AmountConvertPipe implements PipeTransform {
       temporaryValue = '零元';
     } else if (numberConvert <= 10){
       temporaryValue = this.characterStore[numberConvert] + '元';
-      console.log(typeof(numberConvert));
     } else if (numberConvert < 20){
       temporaryValue = '拾' + this.characterStore[param.charAt(1)] + '元';
     }else if (numberConvert < 100) {
