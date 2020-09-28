@@ -11,7 +11,7 @@ import {AlertComponent} from './alert/alert.component';
 export class AppComponent implements OnInit {
 
   @ViewChild('secondMenu') secondMenu: any;
-  private practiceStatus = this.userService.getUser() ? false : true;
+  public practiceStatus = this.userService.getUser() ? false : true;
   private secondStatus = true; // 二级菜单栏状态
 
   constructor(public userService: UserService, injector: Injector){
