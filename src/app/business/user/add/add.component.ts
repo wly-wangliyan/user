@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild, ElementRef, OnDestroy} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserInfo } from '../../../user.model';
-import { UserService } from '../../../user.service';
-import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
-import { Subscription } from 'rxjs';
-import { AlertService } from '../../../alert/alert.service';
+import {Router, ActivatedRoute} from '@angular/router';
+import {UserInfo} from '../../../user.model';
+import {UserService} from '../../../user.service';
+import {validateHelper, ValidateHelper} from '../../../../utils/validate-helper';
+import {Subscription} from 'rxjs';
+import {AlertService} from '../../../alert/alert.service';
 
 
 @Component({
@@ -27,11 +27,11 @@ export class AddComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.subscription = this.alertService.cancelBroadcast.subscribe(() => {
-      this.router.navigate(['/list'], { relativeTo: this.route });
+      this.router.navigate(['/list'], {relativeTo: this.route});
     });
   }
 
-  public ngOnDestroy(): void{
+  public ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
     this.subscription && this.subscription.unsubscribe();
   }
@@ -40,7 +40,7 @@ export class AddComponent implements OnInit, OnDestroy {
   public onSetEditFormSubmit(): void {
     if (this.checkParamsValid(this.userInfo)) {
       this.userService.saveUser(this.userInfo);
-      this.router.navigate(['/list'], { relativeTo: this.route });
+      this.router.navigate(['/list'], {relativeTo: this.route});
     }
   }
 
@@ -50,7 +50,7 @@ export class AddComponent implements OnInit, OnDestroy {
       // this.userService.cancelClick();
       this.alertService.showAsElement();
     } else {
-      this.router.navigate(['/list'], { relativeTo: this.route });
+      this.router.navigate(['/list'], {relativeTo: this.route});
     }
   }
 

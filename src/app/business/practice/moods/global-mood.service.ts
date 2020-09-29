@@ -16,7 +16,7 @@ export class GlobalMoodService {
   }
 
   // 产生0~7之间的随机数
-  private getRandomNumberByRange(start, end): number{
+  private getRandomNumberByRange(start: number, end: number): number{
     return Math.floor(Math.random() * (end - start) + start);
   }
 

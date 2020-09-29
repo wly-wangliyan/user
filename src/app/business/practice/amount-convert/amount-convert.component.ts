@@ -20,7 +20,7 @@ export class AmountConvertComponent implements OnInit {
     this.finalAmount = this.amount;
   }
 
-  public onKeydown(e): void{
+  public onKeydown(e: any): void{
     const valueLength = e.target.value.length;
     let finalValue: string;
     const targetValue = e.target.value;

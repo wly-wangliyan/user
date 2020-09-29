@@ -21,7 +21,7 @@ export class MomentMoodService {
   //   return sessionStorage.getItem('momentMoodSession');
   // }
 
-  private getRandomNumberByRange(start, end): number{
+  private getRandomNumberByRange(start: number, end: number): number{
     return Math.floor(Math.random() * (end - start) + start);
   }
 }

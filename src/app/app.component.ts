@@ -1,5 +1,5 @@
 import {Component, ViewChild, OnInit, Injector, OnDestroy} from '@angular/core';
-import { UserService } from './user.service';
+import {UserService} from './user.service';
 import {createCustomElement} from '@angular/elements';
 import {AlertComponent} from './alert/alert.component';
 import {GlobalMoodService} from './business/practice/moods/global-mood.service';
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public practiceStatus = this.userService.getUser() ? false : true;
   private secondStatus = true; // 二级菜单栏状态
 
-  constructor(public userService: UserService, injector: Injector, public globalMoodService: GlobalMoodService){
+  constructor(public userService: UserService, injector: Injector, public globalMoodService: GlobalMoodService) {
     const AlertElement = createCustomElement(AlertComponent, {injector});
     // 注册自定义元素
     customElements.define('alert-element', AlertElement);
@@ -36,27 +36,27 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   // 点击导航菜单效果
-  public onClickChooseMenu(e): void{
+  public onClickChooseMenu(e: any): void {
     const aItems: any = document.getElementsByClassName('choice');
-    for (const item of aItems){
-      if (item.id === e.target.id){
+    for (const item of aItems) {
+      if (item.id === e.target.id) {
         item.style.color = '#40a9ff';
         item.style.backgroundColor = '#26334f';
-        if (e.target.id === 'L3' ){
+        if (e.target.id === 'L3') {
           this.secondStatus = !this.secondStatus;
-          this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block' ;
-        }else{
+          this.secondMenu.nativeElement.style.display = this.secondStatus === true ? 'none' : 'block';
+        } else {
           this.secondStatus = true;
           this.secondMenu.nativeElement.style.display = 'none';
         }
-      }else{
+      } else {
         item.style.color = 'white';
         item.style.backgroundColor = '#3b4966';
       }
     }
   }
 
-  public ngOnDestroy(): void{
+  public ngOnDestroy(): void {
     console.log('123');
     sessionStorage.removeItem('globalMoodSession');
   }

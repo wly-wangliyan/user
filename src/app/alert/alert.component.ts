@@ -9,7 +9,7 @@ import { AlertService } from './alert.service';
   animations: [
     trigger('state', [
       state('opened', style({transform: 'translateY(50px)'})),
-      state('void,closed', style({transform: 'translateY(20px)'})),
+      state('void,closed', style({transform: 'translateY(20px)', opacity: 1})),
       transition('* => *', animate('300ms ease-in')),
     ])
   ],

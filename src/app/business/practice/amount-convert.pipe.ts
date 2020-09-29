@@ -44,28 +44,28 @@ export class AmountConvertPipe implements PipeTransform {
     const numberConvert = Number(param);
     let temporaryValue: string;
     if (numberConvert === 0) {
-      temporaryValue = '零元';
+      temporaryValue = '零圆';
     } else if (numberConvert <= 10){
-      temporaryValue = this.characterStore[numberConvert] + '元';
+      temporaryValue = this.characterStore[numberConvert] + '圆';
     } else if (numberConvert < 20){
-      temporaryValue = '拾' + this.characterStore[param.charAt(1)] + '元';
+      temporaryValue = '拾' + this.characterStore[param.charAt(1)] + '圆';
     }else if (numberConvert < 100) {
       if (numberConvert % 10 === 0) {
-        temporaryValue = this.characterStore[param.charAt(0)] + '拾元';
+        temporaryValue = this.characterStore[param.charAt(0)] + '拾圆';
       } else {
-        temporaryValue = this.characterStore[param.charAt(0)] + '拾' + this.characterStore[param.charAt(1)] + '元';
+        temporaryValue = this.characterStore[param.charAt(0)] + '拾' + this.characterStore[param.charAt(1)] + '圆';
       }
     }else {
       if (numberConvert % 100 === 0) {
-        temporaryValue = this.characterStore[param.charAt(0)] + '佰元';
+        temporaryValue = this.characterStore[param.charAt(0)] + '佰圆';
       } else if (numberConvert % 10 === 0) {
-        temporaryValue = this.characterStore[param.charAt(0)] + '佰' + this.characterStore[param.charAt(1)] + '拾元';
+        temporaryValue = this.characterStore[param.charAt(0)] + '佰' + this.characterStore[param.charAt(1)] + '拾圆';
       } else {
         if (param.charAt(1) === '0') {
-          temporaryValue = this.characterStore[param.charAt(0)] + '佰零' + this.characterStore[param.charAt(2)] + '元';
+          temporaryValue = this.characterStore[param.charAt(0)] + '佰零' + this.characterStore[param.charAt(2)] + '圆';
         } else {
           // tslint:disable-next-line: max-line-length
-          temporaryValue = this.characterStore[param.charAt(0)] + '佰' + this.characterStore[param.charAt(1)] + '拾' + this.characterStore[param.charAt(2)] + '元';
+          temporaryValue = this.characterStore[param.charAt(0)] + '佰' + this.characterStore[param.charAt(1)] + '拾' + this.characterStore[param.charAt(2)] + '圆';
         }
       }
     }
