@@ -16,7 +16,6 @@ export class AddComponent implements OnInit, OnDestroy {
 
   @ViewChild('cancelBtn') cancelBtn: ElementRef;
 
-
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
   private subscription: Subscription;

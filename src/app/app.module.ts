@@ -10,7 +10,9 @@ import {AddComponent} from './business/user/add/add.component';
 import {ListComponent} from './business/user/list/list.component';
 import {UserService} from './user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AlertComponent } from './alert/alert.component';
+import {AlertComponent} from './alert/alert.component';
+
+// import { TimerPipe } from '.busi/practice/timer.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { AlertComponent } from './alert/alert.component';
     AddComponent,
     ListComponent,
     AlertComponent,
+    // TimerPipe,
   ],
   imports: [
     BrowserModule,

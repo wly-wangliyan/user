@@ -1,0 +1,11 @@
+<div class="timer-box">
+  <div class="time-box">
+    <label>北京时间：</label>
+    <div id="time1">{{newDate}}</div>
+  </div>
+  <div class="button-box">
+    <button (click)="timerStart()">{{timerService.status}}计时</button>
+    <button class="end-button" (click)="timerEnd()" [disabled]="disableStatus">结束计时</button>
+  </div>
+  <div class="time">{{timerService.timeSeconds | timer}}</div>
+</div>

@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { UserInfo } from '../../../user.model';
-import { UserService } from '../../../user.service';
-import { validateHelper, ValidateHelper } from '../../../../utils/validate-helper';
-import { AlertService } from '../../../alert/alert.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {UserInfo} from '../../../user.model';
+import {UserService} from '../../../user.service';
+import {validateHelper, ValidateHelper} from '../../../../utils/validate-helper';
+import {AlertService} from '../../../alert/alert.service';
 
 @Component({
   selector: 'app-edit',
   styleUrls: ['./edit.component.less'],
   templateUrl: './edit.component.html',
 })
-export class EditComponent implements OnInit, OnDestroy{
+export class EditComponent implements OnInit, OnDestroy {
 
   public userInfo = new UserInfo();
   public sexArray = ['男', '女'];
@@ -34,7 +34,7 @@ export class EditComponent implements OnInit, OnDestroy{
     });
   }
 
-  public ngOnDestroy(): void{
+  public ngOnDestroy(): void {
     // tslint:disable-next-line:no-unused-expression
     this.subscription && this.subscription.unsubscribe();
   }
@@ -58,11 +58,11 @@ export class EditComponent implements OnInit, OnDestroy{
   }
 
   // 根据上一页面路由信息判断跳转
-  private navigated(): void{
+  private navigated(): void {
     if (this.fromPath === 'details') {
-      this.router.navigate(['/details'], { relativeTo: this.route });
+      this.router.navigate(['/details'], {relativeTo: this.route});
     } else {
-      this.router.navigate(['/list'], { relativeTo: this.route });
+      this.router.navigate(['/list'], {relativeTo: this.route});
     }
   }
 

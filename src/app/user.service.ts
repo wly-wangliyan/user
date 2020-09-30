@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { UserInfo } from './user.model';
+import {interval} from 'rxjs';
 
 const USER_INFO_KEY = 'user_service_info';
 

@@ -12,6 +12,7 @@
     "deprecation": {
       "severity": "warning"
     },
+    "no-consecutive-blank-lines": [true, 1],
     "ordered-imports": false,
     "eofline": true,
     "import-blacklist": [true, "rxjs/Rx"],
