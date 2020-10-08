@@ -16,7 +16,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   constructor(public timerService: TimerService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     const timeCounter = interval(1000);
     this.subscription = timeCounter.subscribe((n) => {
       document.getElementById('time1').innerHTML = new Date().toLocaleString();

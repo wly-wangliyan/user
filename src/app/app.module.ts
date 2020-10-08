@@ -10,9 +10,8 @@ import {AddComponent} from './business/user/add/add.component';
 import {ListComponent} from './business/user/list/list.component';
 import {UserService} from './user.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AlertComponent} from './alert/alert.component';
-
-// import { TimerPipe } from '.busi/practice/timer.pipe';
+import { AlertComponent } from './alert/alert.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,14 +22,14 @@ import {AlertComponent} from './alert/alert.component';
     AddComponent,
     ListComponent,
     AlertComponent,
-    // TimerPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
