@@ -6,7 +6,7 @@
         <li><a routerLink="/home"  id="L1" class="choice open-close-container" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">主页</a></li>
         <li><a routerLink="/list"  id="L2" class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">个人信息</a></li>
         <li [ngClass]="{'practice-menu': practiceStatus}"><a routerLink="/practice" id="L3"  class="choice" routerLinkActive="activeRoute" (click)="onClickChooseMenu($event)">练习</a>
-          <ul class="second-menu" #secondMenu>
+          <ul class="second-menu"  #secondMenu>
             <li><a routerLink="/practice/amount-convert"  id="L4" class="choice" routerLinkActive="activeRoute">管道应用</a></li>
             <li><a routerLink="/practice/moods" id="L5" class="choice" routerLinkActive="activeRoute">服务应用</a></li>
             <li><a routerLink="/practice/timer" id="L6" class="choice" routerLinkActive="activeRoute">rxjs应用</a></li>

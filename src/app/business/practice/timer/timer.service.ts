@@ -9,7 +9,7 @@ export class TimerService {
   public timeSeconds = 0;
   public subscription: Subscription;
   public status = '开始';
-  public b = 0;
+  public pauseSeconds = 0;
 
   constructor() {
   }
@@ -19,21 +19,19 @@ export class TimerService {
     switch (this.status) {
       case '开始':
         this.subscription = secondsCounter.subscribe(n => {
-            // console.log(n);
             this.timeSeconds = n + 1;
             this.status = '暂停';
           }
         );
         break;
       case '暂停':
-        this.b = this.timeSeconds;
+        this.pauseSeconds = this.timeSeconds;
         this.subscription.unsubscribe();
         this.status = '继续';
         break;
       case '继续':
         this.subscription = secondsCounter.subscribe(n => {
-            // console.log(n);
-            this.timeSeconds = this.b + n + 1;
+            this.timeSeconds = this.pauseSeconds + n + 1;
             this.status = '暂停';
           }
         );
@@ -44,7 +42,7 @@ export class TimerService {
   public timerEnd(): string {
     this.subscription.unsubscribe();
     this.timeSeconds = 0;
-    this.b = 0;
+    this.pauseSeconds = 0;
     this.status = '开始';
     return this.status;
   }

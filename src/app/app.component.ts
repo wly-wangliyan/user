@@ -28,7 +28,8 @@ export class AppComponent implements OnInit, OnDestroy {
         this.practiceStatus = false;
       });
     }
-    // 监听练习模块页面点击导航栏，左侧导航栏显示
+
+    // 监听练习模块页面点击上方导航栏，左侧导航栏显示
     this.userService.practiceModalStatus.subscribe(() => {
       this.secondStatus = false;
       this.secondMenu.nativeElement.style.display = 'block';
