@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {TimerService} from './timer.service';
 import {interval, Subscription} from 'rxjs';
 
@@ -8,6 +8,8 @@ import {interval, Subscription} from 'rxjs';
   styleUrls: ['./timer.component.less']
 })
 export class TimerComponent implements OnInit, OnDestroy {
+
+  @ViewChild('currentTime') currentTime: ElementRef;
   public disableStatus: boolean = this.timerService.status === '开始' ? true : false;
   public newDate = new Date().toLocaleString();
   private subscription: Subscription;
@@ -18,7 +20,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     const timeCounter = interval(1000);
     this.subscription = timeCounter.subscribe((n) => {
-      document.getElementById('time1').innerHTML = new Date().toLocaleString();
+      this.currentTime.nativeElement.innerHTML = new Date().toLocaleString();
     });
   }
 
